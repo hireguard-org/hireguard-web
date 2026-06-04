@@ -291,4 +291,4 @@ Publishers that do not set this header limit verification to browser extensions 
 
 ---
 
-*This specification is read alongside the HireGuard Technical Document and Design System v1.0.*
+*This specification is read alongside the [Architecture Document](./architecture.md) and [Tier 0 Schema](./hiring-txt-tier0.schema.json).*
