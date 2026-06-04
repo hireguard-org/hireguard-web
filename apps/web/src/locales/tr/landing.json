@@ -1,0 +1,35 @@
+{
+  "badge": "Açık İşe Alım Doğrulama Protokolü",
+  "title": "hiring",
+  "titleAccent": ".txt",
+  "subtitle": "Herhangi bir işe alımcıyı saniyeler içinde doğrula. Firmalar domain'lerine köklü bir beyan yayınlar; adaylar bunu bağımsızca kontrol eder. Kayıt yok, veri toplama yok — her şey tarayıcında çalışır.",
+  "ctaGenerate": "hiring.txt Üret",
+  "ctaVerify": "İşe Alımcı Doğrula",
+  "whatIs": {
+    "title": "hiring.txt Nedir?",
+    "description": "Firmanın <code>/.well-known/hiring.txt</code> adresinde yayınladığı, meşru işe alım kanallarını, domain'lerini ve taahhütlerini beyan eden basit bir metin dosyası. Arama motorları için <code>robots.txt</code>, güvenlik açıkları için <code>security.txt</code> gibi — ama iş arayanları dolandırıcılıktan korumak için."
+  },
+  "problem": {
+    "title": "Problem",
+    "stat1": "%300",
+    "stat1Label": "2020'den bu yana iş dolandırıcılığında artış",
+    "stat2": "14M+",
+    "stat2Label": "yılda sahte iş tekliflerine maruz kalan kişi",
+    "stat3": "$2B+",
+    "stat3Label": "yılda işe alım dolandırıcılığına kaybedilen para",
+    "description": "Dolandırıcılar gerçek firmaları taklit eder, benzer domain'ler kullanır ve işe alım süreçlerinin opak yapısını istismar eder. Adayların bir işe alımcının meşru olup olmadığını doğrulayacak güvenilir bir yolu yoktur."
+  },
+  "solution": {
+    "title": "Çözüm",
+    "step1Title": "Firma Yayınlar",
+    "step1Desc": "Domain'ine bir hiring.txt dosyası koyarak resmî kanallarını, başvuru adreslerini ve Never taahhütlerini beyan et.",
+    "step2Title": "Aday Kontrol Eder",
+    "step2Desc": "İşe alımcının e-postasını, linkini veya mesajını doğrulayıcımıza yapıştır. Firmanın domain'inden hiring.txt'yi çekip çapraz kontrol yaparız.",
+    "step3Title": "Anlık Karar",
+    "step3Desc": "DOĞRULANDI, BİLİNMİYOR veya ŞÜPHELİ — net gerekçe ve yapılması gerekenlerle. Hesap gerektirmez."
+  },
+  "openProtocol": {
+    "title": "Açık Protokol",
+    "description": "hiring.txt bir ürün değil, bir konvansiyondur. robots.txt gibi herkes uygulayabilir. HireGuard araçları ve referans uygulamayı sunar."
+  }
+}

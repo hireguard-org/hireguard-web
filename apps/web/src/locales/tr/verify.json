@@ -1,0 +1,77 @@
+{
+  "title": "İşe Alımcıyı Doğrula",
+  "subtitle": "İşe alımcının e-postasını, linkini veya mesajını yapıştır. Firmanın hiring.txt beyanıyla karşılaştıracağız — her şey tarayıcında çalışır.",
+  "form": {
+    "company": {
+      "label": "Firma Adı",
+      "placeholder": "ör. Google, Amazon, Meta...",
+      "hint": "Kanonik domain'i bulmak için kayıt defterinde arayacağız."
+    },
+    "senderEmail": {
+      "label": "Gönderen E-posta",
+      "placeholder": "recruiter@firma.com",
+      "hint": "İşe alımcının sana ulaştığı e-posta adresi."
+    },
+    "listingUrl": {
+      "label": "İş İlanı URL'i",
+      "placeholder": "https://careers.firma.com/jobs/12345",
+      "hint": "Opsiyonel. Gönderilen iş ilanı veya başvuru linki."
+    },
+    "messageText": {
+      "label": "Mesaj Metni",
+      "placeholder": "Dolandırıcılık dili analizi için işe alımcının mesajını buraya yapıştır...",
+      "hint": "Opsiyonel. Ödeme talepleri, aciliyet dili, kripto referansları ve diğer kırmızı bayrakları tararız."
+    },
+    "authHeader": {
+      "label": "E-posta Kimlik Doğrulama Header'ı",
+      "placeholder": "Authentication-Results: mx.google.com; dkim=pass ...",
+      "hint": "Opsiyonel. DKIM/SPF/DMARC kontrolü için e-posta kaynağındaki Authentication-Results header'ını yapıştır."
+    },
+    "canonicalDomain": {
+      "label": "Kanonik Domain",
+      "placeholder": "firma.com",
+      "hint": "Firma kayıt defterinde yoksa, resmî domain'ini manuel gir."
+    }
+  },
+  "btn": {
+    "verify": "Doğrula",
+    "verifying": "Doğrulanıyor...",
+    "reset": "Yeni Doğrulama"
+  },
+  "registry": {
+    "found": "Firma kayıt defterinde bulundu",
+    "notFound": "Firma kayıt defterinde yok — kanonik domain'i manuel gir",
+    "searching": "Aranıyor..."
+  },
+  "result": {
+    "title": "Doğrulama Sonucu",
+    "verdict": {
+      "VERIFIED": "DOĞRULANDI",
+      "UNKNOWN": "BİLİNMİYOR",
+      "SUSPICIOUS": "ŞÜPHELİ",
+      "VERIFIED_CONTRADICTION": "DOĞRULANDI — ÇELİŞKİ VAR"
+    },
+    "verdictDesc": {
+      "VERIFIED": "İşe alımcının bilgileri firmanın hiring.txt beyanıyla eşleşiyor. Bu kesin, deterministik bir eşleşmedir.",
+      "UNKNOWN": "Bu işe alımcıyı doğrulayamadık — firma hiring.txt yayınlamıyor olabilir veya bilgiler eşleşmedi. Bu dolandırıcılık kanıtı değildir.",
+      "SUSPICIOUS": "Uyarı işaretleri tespit edildi. Dikkatli ol ve firmanın resmî kanalları üzerinden doğrula.",
+      "VERIFIED_CONTRADICTION": "Domain doğrulaması geçti ama bir Never taahhüdü çelişiyor. Bu hesap ele geçirme işareti olabilir."
+    },
+    "steps": "Doğrulama Adımları",
+    "reasons": "Bu karar neden verildi",
+    "emailAuth": "E-posta Kimlik Doğrulaması",
+    "heuristics": "Heuristik Sinyaller",
+    "noHeuristics": "Şüpheli sinyal tespit edilmedi.",
+    "actions": "Ne yapmalısın",
+    "action_VERIFIED": "Bu meşru görünüyor. hiring.txt'te listelenen kanallar üzerinden işe alım sürecine devam edebilirsin.",
+    "action_UNKNOWN": "Kişisel bilgi paylaşmadan önce bu işe alımcının kimliğini teyit etmek için firmayla resmî web sitesi üzerinden doğrudan iletişime geç.",
+    "action_SUSPICIOUS": "Bu işe alımcıya YANIT VERME. Şüpheli iletişimi firmanın Report-Abuse kanalını kullanarak firmaya ve para talep edildiyse yetkililere bildir."
+  },
+  "corsBlocked": {
+    "title": "CORS Engellendi",
+    "desc": "Firmanın sunucusu cross-origin isteklere izin vermiyor. Dosya mevcut olabilir ama tarayıcıdan çekemiyoruz.",
+    "suggestion": "CORS'tan bağımsız doğrulama için tarayıcı eklentisini (yakında) dene veya manuel kontrol et:"
+  },
+  "optional": "(opsiyonel)",
+  "required": "*"
+}

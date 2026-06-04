@@ -1,0 +1,35 @@
+{
+  "badge": "Open Recruiter Verification Protocol",
+  "title": "hiring",
+  "titleAccent": ".txt",
+  "subtitle": "Verify any recruiter in seconds. Companies publish a domain-rooted declaration; candidates check it independently. No signup, no data collection — everything runs in your browser.",
+  "ctaGenerate": "Generate hiring.txt",
+  "ctaVerify": "Verify a Recruiter",
+  "whatIs": {
+    "title": "What is hiring.txt?",
+    "description": "A simple text file at <code>/.well-known/hiring.txt</code> that declares a company's legitimate recruiting channels, domains, and commitments. Like <code>robots.txt</code> for search engines or <code>security.txt</code> for vulnerability disclosure — but for protecting job seekers from recruitment fraud."
+  },
+  "problem": {
+    "title": "The Problem",
+    "stat1": "300%",
+    "stat1Label": "increase in job scams since 2020",
+    "stat2": "14M+",
+    "stat2Label": "people exposed to fake job offers yearly",
+    "stat3": "$2B+",
+    "stat3Label": "lost to recruitment fraud annually",
+    "description": "Scammers impersonate real companies, use lookalike domains, and exploit the opacity of hiring processes. Candidates have no reliable way to verify if a recruiter is legitimate."
+  },
+  "solution": {
+    "title": "The Solution",
+    "step1Title": "Company Publishes",
+    "step1Desc": "Place a hiring.txt file on your domain declaring official channels, application URLs, and Never commitments.",
+    "step2Title": "Candidate Checks",
+    "step2Desc": "Paste the recruiter's email, link, or message into our verifier. We fetch hiring.txt from the company's domain and cross-reference.",
+    "step3Title": "Instant Verdict",
+    "step3Desc": "VERIFIED, UNKNOWN, or SUSPICIOUS — with clear reasoning and actionable next steps. No account needed."
+  },
+  "openProtocol": {
+    "title": "Open Protocol",
+    "description": "hiring.txt is not a product — it's a convention. Like robots.txt, anyone can implement it. HireGuard provides the tools and reference implementation."
+  }
+}

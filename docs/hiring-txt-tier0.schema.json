@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hiringtxt.org/schema/tier0.json",
+  "title": "hiring.txt Tier 0",
+  "description": "Machine-readable data model for the cryptography-free core tier of the hiring.txt recruiter-verification convention. A parser of /.well-known/hiring.txt produces an object conforming to this schema. Comments (lines starting with #) and blank lines are part of the wire-format grammar and are stripped during parsing — they do not appear in this data model.",
+  "type": "object",
+  "required": [
+    "canonicalDomains",
+    "recruitingChannels",
+    "applicationUrls",
+    "never",
+    "verifyContact",
+    "reportAbuse",
+    "expires"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "tier": {
+      "description": "Declared assurance tier. 0 = unsigned core.",
+      "type": "integer",
+      "enum": [0, 1, 2],
+      "default": 0
+    },
+    "canonicalDomains": {
+      "description": "Domains from which the company's recruiters legitimately send email. Wire format: comma-separated single line OR repeated keys (comma-safe — hostnames cannot contain commas). Parser MUST support both forms and union the results.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^(?=.{1,253}$)(?!-)[A-Za-z0-9-]{1,63}(?<!-)(\.(?!-)[A-Za-z0-9-]{1,63}(?<!-))+$"
+      }
+    },
+    "recruitingChannels": {
+      "description": "Official channels recruiters use (LinkedIn company page, careers site, etc.). HTTPS only. Wire format: repeated keys only (URLs may contain commas; comma-splitting is forbidden for this field).",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "format": "uri", "pattern": "^https://" }
+    },
+    "applicationUrls": {
+      "description": "The only legitimate locations where candidates may apply. HTTPS only. Wire format: repeated keys only (URLs may contain commas; comma-splitting is forbidden for this field).",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "format": "uri", "pattern": "^https://" }
+    },
+    "never": {
+      "description": "Machine-readable negative assertions. The company commits it will never do these. Open vocabulary with a well-known token registry; custom tokens allowed in kebab-case format. Wire format: comma-separated single line OR repeated keys (comma-safe — tokens cannot contain commas). Parser MUST support both forms.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9-]*[a-z0-9]$",
+        "examples": [
+          "payment",
+          "crypto",
+          "gift-cards",
+          "personal-email",
+          "whatsapp-first-contact",
+          "telegram-first-contact",
+          "id-before-offer",
+          "bank-details-before-offer"
+        ]
+      }
+    },
+    "verifyContact": {
+      "description": "Official endpoint to confirm whether a person is a genuine recruiter. mailto: or https: URI.",
+      "type": "string",
+      "format": "uri",
+      "pattern": "^(mailto:|https://)"
+    },
+    "reportAbuse": {
+      "description": "Where to report impersonation. mailto: or https: URI.",
+      "type": "string",
+      "format": "uri",
+      "pattern": "^(mailto:|https://)"
+    },
+    "policy": {
+      "description": "Optional human-readable recruiting policy page.",
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "verifiedRecruiters": {
+      "description": "Optional list of recruiters' public professional profile URLs (low-sensitivity). Wire format: repeated keys only (URLs may contain commas).",
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string", "format": "uri", "pattern": "^https://" }
+    },
+    "expires": {
+      "description": "Freshness deadline. A verifier MUST treat an expired file as 'unverifiable'.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "description": "When the file was last revised.",
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "$defs": {
+    "wellKnownNeverTokens": {
+      "description": "Registry of well-known Never tokens with standardized semantics. Verifiers SHOULD recognize these tokens for automated policy-contradiction checks. Custom tokens beyond this set are valid but may not be automatically matched by all verifiers.",
+      "enum": [
+        "payment",
+        "crypto",
+        "gift-cards",
+        "personal-email",
+        "whatsapp-first-contact",
+        "telegram-first-contact",
+        "id-before-offer",
+        "bank-details-before-offer"
+      ]
+    }
+  },
+  "$comment": "Wire-format grammar: Lines starting with # (after leading whitespace trim) are comments and MUST be silently discarded. Inline # does NOT start a comment (URLs may contain fragments). Blank lines are silently discarded. Data lines follow Key: Value format. See Format Grammar specification for full tokenization rules. --- Tier 1 adds: signature (string, detached-signature URI or inline), and one of key (PGP public-key URI) or did (did:web identifier). Tier 2 adds per-recruiter Verifiable Credentials resolved via did:web. Those tiers extend this schema and are out of scope for Tier 0."
+}

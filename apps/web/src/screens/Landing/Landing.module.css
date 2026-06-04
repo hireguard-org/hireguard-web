@@ -1,0 +1,241 @@
+/* ─── Landing Screen ──────────────────────────────────────────────── */
+
+.hero {
+  padding-block: 60px 40px;
+  max-width: 720px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent-dim);
+  background: var(--accent-bg);
+  padding: 5px 10px;
+  border-radius: var(--r-pill);
+  margin-block-end: var(--sp-6);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.title {
+  margin-block-end: var(--sp-6);
+}
+
+.subtitle {
+  color: var(--muted);
+  max-width: 640px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin-block-end: var(--sp-8);
+}
+
+.ctas {
+  display: flex;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+}
+
+/* ── Buttons ── */
+
+.btnPrimary,
+.btnSecondary {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  padding: 14px 24px;
+  border-radius: var(--r-block);
+  border: 1px solid var(--line);
+  transition: all var(--duration-normal);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.btnPrimary {
+  background: var(--accent);
+  color: #04140a;
+  border-color: var(--accent);
+}
+
+.btnPrimary:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 6px 20px var(--accent-glow);
+}
+
+.btnSecondary {
+  background: var(--input-bg);
+  color: var(--text);
+}
+
+.btnSecondary:hover {
+  border-color: var(--input-hover-border);
+}
+
+/* ── Sections ── */
+
+.section {
+  padding-block: 40px;
+  border-block-start: 1px solid var(--line-soft);
+}
+
+.sectionDesc {
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.6;
+  max-width: 640px;
+  margin-block-start: var(--sp-6);
+}
+
+/* ── Explanation Card ── */
+
+.explanationCard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-8);
+  margin-block-start: var(--sp-6);
+  align-items: start;
+}
+
+@media (max-width: 720px) {
+  .explanationCard {
+    grid-template-columns: 1fr;
+  }
+}
+
+.exampleCode {
+  margin: 0;
+  background: #06080b;
+  border: 1px solid var(--line);
+  border-radius: var(--r-block);
+  padding: 18px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.7;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.synKey { color: var(--syn-key); }
+.synComment { color: var(--syn-comment); }
+
+.explanationText {
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.7;
+}
+
+.explanationText code {
+  color: var(--accent);
+  background: var(--accent-bg);
+  padding: 1px 6px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+/* ── Stats ── */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-5);
+  margin-block-start: var(--sp-6);
+}
+
+@media (max-width: 600px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+.statCard {
+  background: linear-gradient(180deg, var(--panel), var(--panel-2));
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  padding: var(--sp-7);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.statNumber {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 32px;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+
+.statLabel {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* ── Steps ── */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-5);
+  margin-block-start: var(--sp-6);
+}
+
+@media (max-width: 720px) {
+  .steps {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stepCard {
+  background: linear-gradient(180deg, var(--panel), var(--panel-2));
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  padding: var(--sp-7);
+}
+
+.stepNum {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 28px;
+  color: var(--accent);
+  opacity: 0.3;
+  letter-spacing: -0.02em;
+}
+
+.stepTitle {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--text);
+  margin-block: 8px;
+}
+
+.stepDesc {
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
+/* ── Open Protocol ── */
+
+.openProto {
+  display: flex;
+  flex-direction: column;
+  padding-block-end: 60px;
+}

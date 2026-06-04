@@ -1,0 +1,66 @@
+{
+  "title": "البروتوكول",
+  "subtitle": "hiring.txt هو اتفاقية مفتوحة وقابلة للقراءة آليًا تتيح للشركات الإعلان عن ممارسات التوظيف المشروعة. تُوثّق هذه الصفحة مواصفات المستوى 0.",
+  "toc": "المحتويات",
+  "overview": {
+    "title": "نظرة عامة",
+    "p1": "<code>hiring.txt</code> هو ملف نصي عادي يُنشر في <code>/.well-known/hiring.txt</code> على النطاق الرسمي للشركة. يُعلن عن النطاقات والقنوات وعناوين URL التي تستخدمها الشركة في التوظيف — وما <strong>لن</strong> تطلبه أبدًا من المرشحين.",
+    "p2": "يمكن لأي مرشح أو أداة جلب الملف عبر HTTPS ومقارنة ادعاءات المُوظِّف بإعلان الشركة. بدون تسجيل، بدون مفتاح API، بدون وسيط."
+  },
+  "format": {
+    "title": "تنسيق Wire",
+    "p1": "يستخدم الملف تنسيق مفتاح-قيمة بسيط، إدخال واحد لكل سطر:",
+    "rule1Title": "التعليقات",
+    "rule1": "الأسطر التي تبدأ بـ <code>#</code> هي تعليقات يتجاهلها المحلل. <code>#</code> داخل السطر <strong>لا</strong> يبدأ تعليقًا — قد تحتوي عناوين URL على أجزاء.",
+    "rule2Title": "الأسطر الفارغة",
+    "rule2": "يتم تخطي الأسطر الفارغة والأسطر التي تحتوي على مسافات فقط بصمت.",
+    "rule3Title": "أزواج مفتاح-قيمة",
+    "rule3": "كل سطر بيانات بتنسيق <code>المفتاح: القيمة</code>. النقطتان الأولى هي الفاصل. المفاتيح غير حساسة لحالة الأحرف.",
+    "rule4Title": "المفاتيح المكررة",
+    "rule4": "عند ظهور نفس المفتاح عدة مرات، يتم دمج القيم (إضافة وليس استبدال).",
+    "rule5Title": "الحقول الآمنة بالفاصلة",
+    "rule5": "فقط <code>Canonical-Domains</code> و<code>Never</code> يدعمان قيمًا مفصولة بفواصل في سطر واحد. حقول URL يجب أن تستخدم مفاتيح مكررة."
+  },
+  "fields": {
+    "title": "حقول المستوى 0",
+    "required": "مطلوب",
+    "optional": "اختياري",
+    "canonicalDomains": { "name": "Canonical-Domains", "desc": "النطاق(ات) التي ترسل منها الشركة رسائل توظيف مشروعة.", "example": "Canonical-Domains: acme.com, careers.acme.com" },
+    "recruitingChannels": { "name": "Recruiting-Channels", "desc": "عناوين URL لقنوات التوظيف الرسمية. HTTPS مطلوب.", "example": "Recruiting-Channels: https://linkedin.com/company/acme" },
+    "applicationUrls": { "name": "Application-URLs", "desc": "عناوين URL المشروعة الوحيدة للتقديم. HTTPS مطلوب.", "example": "Application-URLs: https://careers.acme.com/jobs" },
+    "never": { "name": "Never", "desc": "تأكيدات سلبية — أشياء لن تفعلها الشركة أثناء التوظيف. رموز بصيغة kebab-case.", "example": "Never: payment, crypto, gift-cards" },
+    "verifyContact": { "name": "Verify-Contact", "desc": "جهة اتصال رسمية للتحقق من شرعية المُوظِّف. يجب أن يكون <code>mailto:</code> أو <code>https://</code>.", "example": "Verify-Contact: mailto:verify@acme.com" },
+    "reportAbuse": { "name": "Report-Abuse", "desc": "مكان الإبلاغ عن انتحال الهوية أو الاستخدام الاحتيالي لاسم الشركة.", "example": "Report-Abuse: mailto:abuse@acme.com" },
+    "expires": { "name": "Expires", "desc": "طابع زمني ISO 8601 يُعتبر بعده الملف قديمًا/غير قابل للتحقق.", "example": "Expires: 2027-06-01T00:00:00Z" },
+    "policy": { "name": "Policy", "desc": "صفحة سياسة توظيف اختيارية قابلة للقراءة. HTTPS مطلوب.", "example": "Policy: https://acme.com/recruiting-policy" },
+    "verifiedRecruiters": { "name": "Verified-Recruiters", "desc": "عناوين URL اختيارية للملفات الشخصية العامة للمُوظِّفين المعتمدين.", "example": "Verified-Recruiters: https://linkedin.com/in/jane-doe" },
+    "lastUpdated": { "name": "Last-Updated", "desc": "طابع زمني ISO 8601 لآخر تحديث. يُعيّن تلقائيًا بواسطة المُولّد.", "example": "Last-Updated: 2026-06-04T00:00:00Z" }
+  },
+  "neverTokens": {
+    "title": "رموز Never المعروفة",
+    "description": "الرموز التالية جزء من السجل القياسي. يتعرف عليها المُحققون تلقائيًا.",
+    "payment": "لن تطلب الشركة أي دفعات في أي مرحلة.",
+    "crypto": "لن تطلب الشركة تحويلات عملات مشفرة.",
+    "gift-cards": "لن تطلب الشركة شراء بطاقات هدايا.",
+    "personal-email": "جميع الاتصالات تتم عبر البريد المؤسسي وليس الشخصي.",
+    "whatsapp-first-contact": "التواصل الأول لن يكون عبر واتساب أبدًا.",
+    "telegram-first-contact": "التواصل الأول لن يكون عبر تيليغرام أبدًا.",
+    "id-before-offer": "لن يُطلب إثبات هوية حكومي قبل عرض رسمي.",
+    "bank-details-before-offer": "لن تُطلب تفاصيل بنكية قبل عرض رسمي."
+  },
+  "verdicts": {
+    "title": "أحكام التحقق",
+    "description": "عندما يستخدم المرشح المُحقق، تندرج النتيجة في واحدة من ثلاث فئات:",
+    "verified": "تم التحقق",
+    "verifiedDesc": "نطاق المُوظِّف أو قناته أو ملفه الشخصي يتطابق مع إعلان <code>hiring.txt</code> للشركة.",
+    "unknown": "غير معروف",
+    "unknownDesc": "الشركة ليس لديها <code>hiring.txt</code> أو معلومات المُوظِّف لا تتطابق مع أي قناة مُعلنة.",
+    "suspicious": "مشبوه",
+    "suspiciousDesc": "إشارات استدلالية تدل على احتيال محتمل: نطاق مشابه، مرسل بريد مجاني، أنماط لغة احتيالية."
+  },
+  "cors": {
+    "title": "متطلبات CORS",
+    "description": "لكي يتمكن المُحقق الإلكتروني من جلب <code>hiring.txt</code> عبر النطاقات، يجب أن يتضمن الخادم:",
+    "note": "بدون هذا الرأس، ستحظر المتصفحات الطلب."
+  }
+}

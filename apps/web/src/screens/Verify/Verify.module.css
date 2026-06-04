@@ -1,0 +1,419 @@
+/* ─── Verify Screen ───────────────────────────────────────────────── */
+
+.header {
+  padding-block: 50px 30px;
+  max-width: 720px;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.6;
+  margin-block-start: var(--sp-5);
+  max-width: 640px;
+}
+
+/* ── Form ── */
+
+.formContainer {
+  max-width: 640px;
+  padding-block: 20px;
+}
+
+.field {
+  margin-block-end: var(--sp-6);
+}
+
+.label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  display: block;
+  margin-block-end: 6px;
+}
+
+.req { color: var(--accent); font-weight: 700; }
+.opt { color: var(--subtle); font-weight: 400; }
+
+.input {
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 10px 14px;
+  background: var(--input-bg);
+  border: 1px solid var(--line);
+  border-radius: var(--r-block);
+  color: var(--text);
+  transition: border-color var(--duration-fast);
+}
+
+.input:focus {
+  border-color: var(--accent);
+  outline: 2px solid var(--accent-glow);
+  outline-offset: 1px;
+}
+
+.textarea {
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  padding: 10px 14px;
+  background: var(--input-bg);
+  border: 1px solid var(--line);
+  border-radius: var(--r-block);
+  color: var(--text);
+  resize: vertical;
+  line-height: 1.5;
+  transition: border-color var(--duration-fast);
+}
+
+.textarea:focus {
+  border-color: var(--accent);
+  outline: 2px solid var(--accent-glow);
+  outline-offset: 1px;
+}
+
+.hint {
+  color: var(--subtle);
+  font-size: 11px;
+  margin-block-start: 4px;
+}
+
+.registryFound {
+  margin-block-start: 6px;
+  font-size: 12px;
+  color: var(--accent);
+  padding: 6px 10px;
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-dim);
+  border-radius: var(--r-block);
+}
+
+.registryNotFound {
+  margin-block-start: 6px;
+  font-size: 12px;
+  color: var(--warn);
+  padding: 6px 10px;
+  background: rgba(251, 191, 36, 0.06);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  border-radius: var(--r-block);
+}
+
+.advancedToggle {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--subtle);
+  cursor: pointer;
+  padding: 8px 0;
+  margin-block-end: var(--sp-5);
+  transition: color var(--duration-fast);
+}
+
+.advancedToggle:hover {
+  color: var(--accent);
+}
+
+.btnVerify {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 14px 36px;
+  border-radius: var(--r-block);
+  background: var(--accent);
+  color: #04140a;
+  border: 1px solid var(--accent);
+  cursor: pointer;
+  transition: all var(--duration-normal);
+  width: 100%;
+}
+
+.btnVerify:hover:not(:disabled) {
+  background: var(--accent-hover);
+  box-shadow: 0 6px 24px var(--accent-glow);
+}
+
+.btnVerify:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* ── Loading ── */
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-5);
+  padding-block: 80px;
+  color: var(--muted);
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--line);
+  border-block-start-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Result ── */
+
+.resultContainer {
+  max-width: 720px;
+  padding-block: 20px;
+}
+
+/* Verdict box */
+
+.verdictBox {
+  padding: var(--sp-7) var(--sp-6);
+  border-radius: var(--r-card);
+  border: 1px solid var(--line);
+  margin-block-end: var(--sp-6);
+}
+
+.verdictLabel {
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: 0.12em;
+  display: block;
+  margin-block-end: 8px;
+}
+
+.verdictDesc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.verdictVERIFIED {
+  background: rgba(74, 222, 128, 0.05);
+  border-color: var(--accent-dim);
+}
+
+.verdictVERIFIED .verdictLabel {
+  color: var(--accent);
+}
+
+.verdictUNKNOWN {
+  background: rgba(251, 191, 36, 0.04);
+  border-color: rgba(251, 191, 36, 0.25);
+}
+
+.verdictUNKNOWN .verdictLabel {
+  color: var(--warn);
+}
+
+.verdictSUSPICIOUS {
+  background: rgba(248, 113, 113, 0.05);
+  border-color: rgba(248, 113, 113, 0.25);
+}
+
+.verdictSUSPICIOUS .verdictLabel {
+  color: var(--danger);
+}
+
+.verdictVERIFIED_CONTRADICTION {
+  background: rgba(251, 191, 36, 0.06);
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+.verdictVERIFIED_CONTRADICTION .verdictLabel {
+  color: var(--warn);
+}
+
+/* Action box */
+
+.actionBox {
+  padding: var(--sp-5);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--r-block);
+  margin-block-end: var(--sp-6);
+}
+
+.actionBox h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  margin-block-end: 8px;
+}
+
+.actionBox p {
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
+/* Steps */
+
+.stepsSection {
+  margin-block-end: var(--sp-6);
+}
+
+.stepsSection h3,
+.reasonsSection h3,
+.authSection h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  margin-block-end: var(--sp-4);
+}
+
+.stepList {
+  display: grid;
+  gap: 2px;
+}
+
+.stepRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12.5px;
+}
+
+.stepIcon {
+  flex-shrink: 0;
+  font-weight: 700;
+  width: 18px;
+  text-align: center;
+}
+
+.stepLabel {
+  color: var(--text);
+  display: block;
+}
+
+.stepDetail {
+  color: var(--subtle);
+  font-size: 11px;
+  display: block;
+  margin-block-start: 2px;
+  font-family: var(--font-mono);
+}
+
+.steppass { background: rgba(74, 222, 128, 0.05); }
+.steppass .stepIcon { color: var(--accent); }
+
+.stepfail { background: rgba(248, 113, 113, 0.05); }
+.stepfail .stepIcon { color: var(--danger); }
+
+.stepwarn { background: rgba(251, 191, 36, 0.05); }
+.stepwarn .stepIcon { color: var(--warn); }
+
+.stepskip { background: transparent; }
+.stepskip .stepIcon { color: var(--subtle); }
+
+.stepinfo { background: rgba(96, 165, 250, 0.05); }
+.stepinfo .stepIcon { color: #60a5fa; }
+
+/* Reasons */
+
+.reasonsSection {
+  margin-block-end: var(--sp-6);
+}
+
+.reasonList {
+  display: grid;
+  gap: 4px;
+}
+
+.reasonList li {
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.5;
+  padding-inline-start: 16px;
+  position: relative;
+}
+
+.reasonList li::before {
+  content: '→';
+  position: absolute;
+  inset-inline-start: 0;
+  color: var(--accent);
+}
+
+/* Auth badges */
+
+.authSection {
+  margin-block-end: var(--sp-6);
+}
+
+.authGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-4);
+}
+
+.authBadge {
+  text-align: center;
+  padding: 14px;
+  border-radius: var(--r-block);
+  border: 1px solid var(--line);
+}
+
+.authLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--subtle);
+  display: block;
+  margin-block-end: 4px;
+}
+
+.authValue {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.authpass { background: rgba(74, 222, 128, 0.05); }
+.authpass .authValue { color: var(--accent); }
+
+.authfail { background: rgba(248, 113, 113, 0.05); }
+.authfail .authValue { color: var(--danger); }
+
+.authnone { background: var(--panel); }
+.authnone .authValue { color: var(--subtle); }
+
+/* Reset button */
+
+.btnReset {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  padding: 12px 28px;
+  border-radius: var(--r-block);
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: all var(--duration-fast);
+}
+
+.btnReset:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}

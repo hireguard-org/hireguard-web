@@ -1,0 +1,66 @@
+{
+  "title": "El Protocolo",
+  "subtitle": "hiring.txt es una convención abierta y legible por máquinas para que las empresas declaren sus prácticas legítimas de reclutamiento. Esta página documenta la especificación Tier 0.",
+  "toc": "Contenidos",
+  "overview": {
+    "title": "Descripción General",
+    "p1": "<code>hiring.txt</code> es un archivo de texto plano publicado en <code>/.well-known/hiring.txt</code> en el dominio canónico de una empresa. Declara qué dominios, canales y URLs utiliza la empresa para reclutar — y qué <strong>nunca</strong> pedirá a los candidatos.",
+    "p2": "Cualquier candidato o herramienta puede obtener el archivo mediante HTTPS y comparar las afirmaciones de un reclutador con la declaración de la empresa. Sin registro, sin clave API, sin intermediarios."
+  },
+  "format": {
+    "title": "Formato Wire",
+    "p1": "El archivo usa un formato simple de clave-valor, una entrada por línea:",
+    "rule1Title": "Comentarios",
+    "rule1": "Las líneas que comienzan con <code>#</code> (después de espacios opcionales) son comentarios y los analizadores los descartan. El <code>#</code> en línea <strong>no</strong> inicia un comentario — las URLs pueden contener fragmentos.",
+    "rule2Title": "Líneas Vacías",
+    "rule2": "Las líneas vacías y las que solo contienen espacios se omiten silenciosamente.",
+    "rule3Title": "Pares Clave-Valor",
+    "rule3": "Cada línea de datos tiene el formato <code>Clave: Valor</code>. Los dos puntos son el separador. Las claves no distinguen mayúsculas/minúsculas.",
+    "rule4Title": "Claves Repetidas",
+    "rule4": "Cuando la misma clave aparece varias veces, los valores se unen (se agregan, no se reemplazan). Este es el mecanismo principal para campos multi-valor.",
+    "rule5Title": "Campos Seguros con Coma",
+    "rule5": "Solo <code>Canonical-Domains</code> y <code>Never</code> admiten valores separados por comas en una línea. Los campos con URLs deben usar claves repetidas porque las URLs pueden contener comas."
+  },
+  "fields": {
+    "title": "Campos Tier 0",
+    "required": "Obligatorio",
+    "optional": "Opcional",
+    "canonicalDomains": { "name": "Canonical-Domains", "desc": "Dominio(s) desde los que la empresa envía legítimamente correos de reclutamiento.", "example": "Canonical-Domains: acme.com, careers.acme.com" },
+    "recruitingChannels": { "name": "Recruiting-Channels", "desc": "URLs oficiales de canales de reclutamiento. HTTPS obligatorio.", "example": "Recruiting-Channels: https://linkedin.com/company/acme" },
+    "applicationUrls": { "name": "Application-URLs", "desc": "Las únicas URLs legítimas donde los candidatos pueden postularse. HTTPS obligatorio.", "example": "Application-URLs: https://careers.acme.com/jobs" },
+    "never": { "name": "Never", "desc": "Afirmaciones negativas — cosas que la empresa nunca hará durante el reclutamiento. Tokens en kebab-case.", "example": "Never: payment, crypto, gift-cards" },
+    "verifyContact": { "name": "Verify-Contact", "desc": "Contacto oficial para confirmar la legitimidad de un reclutador. Debe ser URI <code>mailto:</code> o <code>https://</code>.", "example": "Verify-Contact: mailto:verify@acme.com" },
+    "reportAbuse": { "name": "Report-Abuse", "desc": "Dónde reportar suplantación o uso fraudulento del nombre de la empresa.", "example": "Report-Abuse: mailto:abuse@acme.com" },
+    "expires": { "name": "Expires", "desc": "Fecha-hora ISO 8601 después de la cual el archivo se considera obsoleto/no verificable.", "example": "Expires: 2027-06-01T00:00:00Z" },
+    "policy": { "name": "Policy", "desc": "Página opcional de política de reclutamiento legible. HTTPS obligatorio.", "example": "Policy: https://acme.com/recruiting-policy" },
+    "verifiedRecruiters": { "name": "Verified-Recruiters", "desc": "URLs opcionales de perfiles públicos de reclutadores autorizados.", "example": "Verified-Recruiters: https://linkedin.com/in/jane-doe" },
+    "lastUpdated": { "name": "Last-Updated", "desc": "Marca de tiempo ISO 8601 de la última actualización. Auto-establecida por el generador.", "example": "Last-Updated: 2026-06-04T00:00:00Z" }
+  },
+  "neverTokens": {
+    "title": "Tokens Never Conocidos",
+    "description": "Los siguientes tokens son parte del registro estándar. Los verificadores los reconocen automáticamente.",
+    "payment": "La empresa nunca pedirá pagos en ninguna etapa.",
+    "crypto": "La empresa nunca solicitará transferencias de criptomonedas.",
+    "gift-cards": "La empresa nunca solicitará compras de tarjetas regalo.",
+    "personal-email": "Toda comunicación usa correo corporativo, nunca personal.",
+    "whatsapp-first-contact": "El primer contacto nunca será por WhatsApp.",
+    "telegram-first-contact": "El primer contacto nunca será por Telegram.",
+    "id-before-offer": "Nunca se requerirá identificación gubernamental antes de una oferta formal.",
+    "bank-details-before-offer": "Nunca se solicitarán datos bancarios antes de una oferta formal."
+  },
+  "verdicts": {
+    "title": "Veredictos de Verificación",
+    "description": "Cuando un candidato usa el verificador, el resultado cae en una de tres categorías:",
+    "verified": "VERIFICADO",
+    "verifiedDesc": "El dominio, canal o perfil del reclutador coincide con la declaración <code>hiring.txt</code> de la empresa.",
+    "unknown": "DESCONOCIDO",
+    "unknownDesc": "La empresa no tiene <code>hiring.txt</code> o la información del reclutador no coincide con ningún canal declarado.",
+    "suspicious": "SOSPECHOSO",
+    "suspiciousDesc": "Señales heurísticas indican posible fraude: dominio similar, remitente de correo gratuito, patrones de lenguaje fraudulento."
+  },
+  "cors": {
+    "title": "Requisito CORS",
+    "description": "Para que el verificador web obtenga <code>hiring.txt</code> cross-origin, el servidor debe incluir:",
+    "note": "Sin este header, los navegadores bloquearán la solicitud."
+  }
+}

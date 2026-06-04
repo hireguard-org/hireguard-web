@@ -1,0 +1,35 @@
+{
+  "badge": "Offenes Recruiter-Verifizierungsprotokoll",
+  "title": "hiring",
+  "titleAccent": ".txt",
+  "subtitle": "Verifiziere jeden Recruiter in Sekunden. Unternehmen veröffentlichen eine domaingebundene Erklärung; Bewerber prüfen sie unabhängig. Keine Registrierung, keine Datenerfassung — alles läuft in deinem Browser.",
+  "ctaGenerate": "hiring.txt generieren",
+  "ctaVerify": "Recruiter verifizieren",
+  "whatIs": {
+    "title": "Was ist hiring.txt?",
+    "description": "Eine einfache Textdatei unter <code>/.well-known/hiring.txt</code>, die die legitimen Recruiting-Kanäle, Domains und Zusagen eines Unternehmens deklariert. Wie <code>robots.txt</code> für Suchmaschinen oder <code>security.txt</code> für Schwachstellenmeldungen — aber zum Schutz von Bewerbern vor Recruiting-Betrug."
+  },
+  "problem": {
+    "title": "Das Problem",
+    "stat1": "300%",
+    "stat1Label": "Anstieg von Job-Betrug seit 2020",
+    "stat2": "14M+",
+    "stat2Label": "Menschen jährlich falschen Jobangeboten ausgesetzt",
+    "stat3": "$2B+",
+    "stat3Label": "jährlich durch Recruiting-Betrug verloren",
+    "description": "Betrüger imitieren echte Unternehmen, verwenden ähnliche Domains und nutzen die Intransparenz von Einstellungsprozessen aus. Bewerber haben keine zuverlässige Möglichkeit zu prüfen, ob ein Recruiter legitim ist."
+  },
+  "solution": {
+    "title": "Die Lösung",
+    "step1Title": "Unternehmen veröffentlicht",
+    "step1Desc": "Platziere eine hiring.txt-Datei auf deiner Domain und deklariere offizielle Kanäle, Bewerbungs-URLs und Never-Zusagen.",
+    "step2Title": "Bewerber prüft",
+    "step2Desc": "Füge die E-Mail, den Link oder die Nachricht des Recruiters in unseren Verifier ein. Wir rufen hiring.txt von der Unternehmensdomain ab und gleichen ab.",
+    "step3Title": "Sofortiges Ergebnis",
+    "step3Desc": "VERIFIZIERT, UNBEKANNT oder VERDÄCHTIG — mit klarer Begründung und umsetzbaren nächsten Schritten. Kein Konto erforderlich."
+  },
+  "openProtocol": {
+    "title": "Offenes Protokoll",
+    "description": "hiring.txt ist kein Produkt — es ist eine Konvention. Wie robots.txt kann es jeder implementieren. HireGuard bietet die Werkzeuge und die Referenzimplementierung."
+  }
+}

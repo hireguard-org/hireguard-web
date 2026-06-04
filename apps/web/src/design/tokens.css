@@ -1,0 +1,97 @@
+/* ─── HireGuard Design System v1.0 — Token Layer ─────────────────────
+   Source of truth: docs/hireguard-design-system.md
+   All values use CSS custom properties for runtime theming.
+   All spacing/direction uses logical properties for RTL support.
+   ──────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* ── Surface ── */
+  --bg: #0a0c10;
+  --panel: #11151c;
+  --panel-2: #161b24;
+  --line: #222a36;
+  --line-soft: #1a212b;
+
+  /* ── Text ── */
+  --text: #dfe6f0;
+  --muted: #79869a;
+  --subtle: #586277;
+
+  /* ── Semantic ── */
+  --accent: #4ade80;
+  --accent-dim: #1f5e3a;
+  --accent-hover: #5ee894;
+  --accent-bg: rgba(74, 222, 128, 0.06);
+  --accent-ring: rgba(74, 222, 128, 0.13);
+  --accent-glow: rgba(74, 222, 128, 0.22);
+  --warn: #fbbf24;
+  --danger: #f87171;
+  --danger-ring: rgba(248, 113, 113, 0.12);
+
+  /* ── Syntax highlighting ── */
+  --syn-key: #8ab4ff;
+  --syn-val: #dfe6f0;
+  --syn-comment: #586277;
+
+  /* ── Typography ── */
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* ── Radius ── */
+  --r-card: 14px;
+  --r-block: 10px;
+  --r-input: 9px;
+  --r-chip: 8px;
+  --r-pill: 999px;
+
+  /* ── Motion ── */
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --duration-fast: 0.14s;
+  --duration-normal: 0.15s;
+  --duration-rise: 0.6s;
+
+  /* ── Spacing scale ── */
+  --sp-2: 6px;
+  --sp-3: 8px;
+  --sp-4: 10px;
+  --sp-5: 14px;
+  --sp-6: 18px;
+  --sp-7: 22px;
+  --sp-8: 24px;
+  --sp-9: 34px;
+  --sp-10: 38px;
+
+  /* ── Layout ── */
+  --container-max: 1180px;
+  --container-pad: 24px;
+  --grid-size: 44px;
+
+  /* ── Input ── */
+  --input-bg: #0c0f15;
+  --input-placeholder: #3f4858;
+  --input-hover-border: #2f3a49;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --container-pad: 16px;
+    --grid-size: 32px;
+  }
+}
+
+/* ─── Dark-first body with grid + glow texture ───────────────────── */
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(900px 500px at 85% -10%, rgba(74, 222, 128, 0.07), transparent 60%),
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: auto, var(--grid-size) var(--grid-size), var(--grid-size) var(--grid-size);
+  background-position: 0 0, -1px -1px, -1px -1px;
+}

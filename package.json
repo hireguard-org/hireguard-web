@@ -1,0 +1,16 @@
+{
+  "name": "hireguard",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "pnpm --filter @hireguard/web dev",
+    "build": "pnpm --filter @hireguard/core build && pnpm --filter @hireguard/web build",
+    "test": "pnpm --filter @hireguard/core test",
+    "test:watch": "pnpm --filter @hireguard/core test -- --watch",
+    "lint": "eslint .",
+    "check-i18n": "node apps/web/scripts/check-i18n.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

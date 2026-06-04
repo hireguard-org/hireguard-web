@@ -1,0 +1,53 @@
+{
+  "title": "hiring.txt'i Benimse",
+  "subtitle": "Firmanın hiring.txt dosyasını üç basit adımda yayınla. Markanı ve adaylarını koru.",
+  "step1": {
+    "num": "01",
+    "title": "Dosyanı Üret",
+    "desc": "Geçerli bir <code>hiring.txt</code> dosyası oluşturmak için üreticimizi kullan. Kanonik domain'lerini, resmî işe alım kanallarını, başvuru URL'lerini ve Never taahhütlerini doldur.",
+    "cta": "Üreticiyi Aç →"
+  },
+  "step2": {
+    "num": "02",
+    "title": "Domain'ine Deploy Et",
+    "desc": "Dosyayı kanonik domain'inde <code>/.well-known/hiring.txt</code> yoluna koy. Geçerli bir TLS sertifikasıyla HTTPS üzerinden sunulmalı.",
+    "nginx": "Nginx",
+    "apache": "Apache",
+    "caddy": "Caddy",
+    "staticHost": "Statik Hostlar",
+    "nginxConfig": "location /.well-known/hiring.txt {\n  alias /var/www/hiring.txt;\n  default_type text/plain;\n  add_header Access-Control-Allow-Origin \"*\";\n  add_header Cache-Control \"public, max-age=86400\";\n}",
+    "apacheConfig": "# .htaccess veya httpd.conf\n<Files \"hiring.txt\">\n  Header set Access-Control-Allow-Origin \"*\"\n  Header set Cache-Control \"public, max-age=86400\"\n</Files>",
+    "caddyConfig": "# Caddyfile\nhandle /.well-known/hiring.txt {\n  header Access-Control-Allow-Origin \"*\"\n  header Cache-Control \"public, max-age=86400\"\n  file_server\n}",
+    "staticHostConfig": "# Netlify: public/_headers\n/.well-known/hiring.txt\n  Access-Control-Allow-Origin: *\n  Cache-Control: public, max-age=86400\n\n# Cloudflare Pages: _headers (aynı sözdizimi)\n# Vercel: vercel.json headers dizisi"
+  },
+  "step3": {
+    "num": "03",
+    "title": "Doğrula & Duyur",
+    "desc": "Deploy'unu doğrulayıcımızla test et, sonra benimsemeni duyur.",
+    "check1": "Dosya <code>https://domain.com/.well-known/hiring.txt</code> adresinde erişilebilir",
+    "check2": "CORS header'ı mevcut: <code>Access-Control-Allow-Origin: *</code>",
+    "check3": "Content-Type <code>text/plain</code>",
+    "check4": "Expires tarihi gelecekte",
+    "check5": "Dosya Tier 0 doğrulamasını geçiyor (doğrulayıcımızı kullan)",
+    "announce": "Benimsemeni LinkedIn'de, kariyer sayfanda ve işe alımcı iletişimlerinde duyurmayı düşün. Bu adaylarla güven inşa eder."
+  },
+  "maintenance": {
+    "title": "Bakım",
+    "desc": "hiring.txt dosyanı güncel tut:",
+    "rule1": "Expires tarihinden önce gözden geçir ve güncelle",
+    "rule2": "İşe alım kanalları veya domain'ler değiştiğinde güncelle",
+    "rule3": "Yeni yetkili işe alımcılar eklediğinde güncelle",
+    "rule4": "Üretici Last-Updated'ı otomatik ayarlar — güncelleme yaparken yeniden üret"
+  },
+  "faq": {
+    "title": "SSS",
+    "q1": "Sunucumuz CORS desteklemiyorsa ne olur?",
+    "a1": "Web doğrulayıcısı dosyanı çekmek için CORS gerektirir. CORS olmadan adaylar tarayıcı eklentisini (yakında) kullanabilir veya dosyayı manuel kontrol edebilir. CORS yapılandırmanızı şiddetle tavsiye ederiz — tek bir header.",
+    "q2": "Alt domain'de barındırabilir miyiz?",
+    "a2": "Dosya kanonik domain'inizde olmalı (örn. ornekfirma.com, careers.ornekfirma.com değil), çünkü doğrulayıcılar e-posta gönderenin domain'inden çözer. Alt domain'leri Canonical-Domains'de listele.",
+    "q3": "Ne sıklıkta güncelemeliyiz?",
+    "a3": "İşe alım kanallarınız, yetkili işe alımcılarınız veya politikalarınız değiştiğinde. En azından Expires tarihinden önce. Expires'ı 6-12 ay ileriye ayarlamanızı öneririz.",
+    "q4": "Ücretsiz mi?",
+    "a4": "Evet, sonsuza kadar. hiring.txt açık bir protokoldür. HireGuard araçları açık kaynak. Ücretli katman yok."
+  }
+}

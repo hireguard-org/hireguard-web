@@ -1,0 +1,35 @@
+{
+  "badge": "Protocole Ouvert de Vérification des Recruteurs",
+  "title": "hiring",
+  "titleAccent": ".txt",
+  "subtitle": "Vérifiez n'importe quel recruteur en quelques secondes. Les entreprises publient une déclaration ancrée à leur domaine ; les candidats la vérifient de manière indépendante. Pas d'inscription, pas de collecte de données — tout fonctionne dans votre navigateur.",
+  "ctaGenerate": "Générer hiring.txt",
+  "ctaVerify": "Vérifier un Recruteur",
+  "whatIs": {
+    "title": "Qu'est-ce que hiring.txt ?",
+    "description": "Un simple fichier texte à l'adresse <code>/.well-known/hiring.txt</code> qui déclare les canaux de recrutement légitimes, les domaines et les engagements d'une entreprise. Comme <code>robots.txt</code> pour les moteurs de recherche ou <code>security.txt</code> pour la divulgation de vulnérabilités — mais pour protéger les candidats contre la fraude au recrutement."
+  },
+  "problem": {
+    "title": "Le Problème",
+    "stat1": "300%",
+    "stat1Label": "d'augmentation des arnaques à l'emploi depuis 2020",
+    "stat2": "14M+",
+    "stat2Label": "personnes exposées à de fausses offres chaque année",
+    "stat3": "2 Md$+",
+    "stat3Label": "perdus chaque année à cause de la fraude au recrutement",
+    "description": "Les escrocs usurpent l'identité d'entreprises réelles, utilisent des domaines similaires et exploitent l'opacité des processus de recrutement. Les candidats n'ont aucun moyen fiable de vérifier si un recruteur est légitime."
+  },
+  "solution": {
+    "title": "La Solution",
+    "step1Title": "L'Entreprise Publie",
+    "step1Desc": "Placez un fichier hiring.txt sur votre domaine déclarant les canaux officiels, les URLs de candidature et les engagements Never.",
+    "step2Title": "Le Candidat Vérifie",
+    "step2Desc": "Collez l'e-mail, le lien ou le message du recruteur dans notre vérificateur. Nous récupérons hiring.txt depuis le domaine de l'entreprise et recoupons.",
+    "step3Title": "Verdict Instantané",
+    "step3Desc": "VÉRIFIÉ, INCONNU ou SUSPECT — avec un raisonnement clair et des prochaines étapes concrètes. Aucun compte requis."
+  },
+  "openProtocol": {
+    "title": "Protocole Ouvert",
+    "description": "hiring.txt n'est pas un produit — c'est une convention. Comme robots.txt, tout le monde peut l'implémenter. HireGuard fournit les outils et l'implémentation de référence."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "nav": {
+    "generator": "Üretici",
+    "verifier": "Doğrulayıcı",
+    "spec": "Protokol",
+    "adopt": "Benimse",
+    "about": "Hakkında"
+  },
+  "footer": {
+    "openSource": "Açık kaynak · Gizlilik öncelikli · Veri toplama yok",
+    "protocol": "hiring.txt açık doğrulama protokolü"
+  },
+  "comingSoon": "Yakında"
+}

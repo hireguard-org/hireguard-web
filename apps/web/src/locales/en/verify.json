@@ -1,0 +1,77 @@
+{
+  "title": "Verify a Recruiter",
+  "subtitle": "Paste a recruiter's email, link, or message. We'll check it against the company's hiring.txt declaration — everything runs in your browser.",
+  "form": {
+    "company": {
+      "label": "Company Name",
+      "placeholder": "e.g. Google, Amazon, Meta...",
+      "hint": "We'll look this up in our registry to find the canonical domain."
+    },
+    "senderEmail": {
+      "label": "Sender Email",
+      "placeholder": "recruiter@company.com",
+      "hint": "The email address the recruiter contacted you from."
+    },
+    "listingUrl": {
+      "label": "Job Listing URL",
+      "placeholder": "https://careers.company.com/jobs/12345",
+      "hint": "Optional. The job listing or application link they sent."
+    },
+    "messageText": {
+      "label": "Message Text",
+      "placeholder": "Paste the recruiter's message here for scam language analysis...",
+      "hint": "Optional. We scan for payment requests, urgency language, crypto references, and other red flags."
+    },
+    "authHeader": {
+      "label": "Email Authentication Header",
+      "placeholder": "Authentication-Results: mx.google.com; dkim=pass ...",
+      "hint": "Optional. Paste the Authentication-Results header from the email source to check DKIM/SPF/DMARC."
+    },
+    "canonicalDomain": {
+      "label": "Canonical Domain",
+      "placeholder": "company.com",
+      "hint": "If the company isn't in our registry, enter their official domain manually."
+    }
+  },
+  "btn": {
+    "verify": "Verify",
+    "verifying": "Verifying...",
+    "reset": "New Verification"
+  },
+  "registry": {
+    "found": "Company found in registry",
+    "notFound": "Company not in registry — enter canonical domain manually",
+    "searching": "Looking up..."
+  },
+  "result": {
+    "title": "Verification Result",
+    "verdict": {
+      "VERIFIED": "VERIFIED",
+      "UNKNOWN": "UNKNOWN",
+      "SUSPICIOUS": "SUSPICIOUS",
+      "VERIFIED_CONTRADICTION": "VERIFIED — WITH CONTRADICTION"
+    },
+    "verdictDesc": {
+      "VERIFIED": "The recruiter's information matches the company's hiring.txt declaration. This is a hard, deterministic match.",
+      "UNKNOWN": "We couldn't verify this recruiter — the company may not have a hiring.txt, or the information didn't match. This is not evidence of fraud.",
+      "SUSPICIOUS": "Warning signs detected. Proceed with caution and verify through official company channels.",
+      "VERIFIED_CONTRADICTION": "Domain verification passed but a Never commitment is contradicted. This may indicate account compromise."
+    },
+    "steps": "Verification Steps",
+    "reasons": "Why this verdict",
+    "emailAuth": "Email Authentication",
+    "heuristics": "Heuristic Signals",
+    "noHeuristics": "No suspicious signals detected.",
+    "actions": "What you should do",
+    "action_VERIFIED": "This appears legitimate. You can proceed with the recruitment process through the channels listed in their hiring.txt.",
+    "action_UNKNOWN": "Contact the company directly through their official website to confirm this recruiter's identity before sharing any personal information.",
+    "action_SUSPICIOUS": "Do NOT respond to this recruiter. Report the suspicious contact to the company using their Report-Abuse channel and to local authorities if money was requested."
+  },
+  "corsBlocked": {
+    "title": "CORS Blocked",
+    "desc": "The company's server doesn't allow cross-origin requests. The file may exist but we can't fetch it from the browser.",
+    "suggestion": "Try the browser extension (coming soon) for CORS-independent verification, or manually check:"
+  },
+  "optional": "(optional)",
+  "required": "*"
+}

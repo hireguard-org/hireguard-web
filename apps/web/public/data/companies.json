@@ -1,0 +1,114 @@
+{
+  "version": "2026.06",
+  "updated": "2026-06-04",
+  "companies": [
+    {
+      "id": "amazon",
+      "names": ["Amazon", "Amazon.com", "AWS", "Amazon Web Services"],
+      "canonicalDomains": ["amazon.com", "amazon.jobs"],
+      "officialChannels": ["https://www.linkedin.com/company/amazon"],
+      "country": "US",
+      "sector": "tech",
+      "impersonationRisk": "high"
+    },
+    {
+      "id": "google",
+      "names": ["Google", "Alphabet", "Google LLC"],
+      "canonicalDomains": ["google.com", "careers.google.com"],
+      "officialChannels": ["https://www.linkedin.com/company/google"],
+      "country": "US",
+      "sector": "tech",
+      "impersonationRisk": "high"
+    },
+    {
+      "id": "microsoft",
+      "names": ["Microsoft", "Microsoft Corporation"],
+      "canonicalDomains": ["microsoft.com", "careers.microsoft.com"],
+      "officialChannels": ["https://www.linkedin.com/company/microsoft"],
+      "country": "US",
+      "sector": "tech",
+      "impersonationRisk": "high"
+    },
+    {
+      "id": "apple",
+      "names": ["Apple", "Apple Inc."],
+      "canonicalDomains": ["apple.com", "jobs.apple.com"],
+      "officialChannels": ["https://www.linkedin.com/company/apple"],
+      "country": "US",
+      "sector": "tech",
+      "impersonationRisk": "high"
+    },
+    {
+      "id": "meta",
+      "names": ["Meta", "Meta Platforms", "Facebook"],
+      "canonicalDomains": ["meta.com", "metacareers.com"],
+      "officialChannels": ["https://www.linkedin.com/company/meta"],
+      "country": "US",
+      "sector": "tech",
+      "impersonationRisk": "high"
+    },
+    {
+      "id": "netflix",
+      "names": ["Netflix", "Netflix Inc."],
+      "canonicalDomains": ["netflix.com", "jobs.netflix.com"],
+      "officialChannels": ["https://www.linkedin.com/company/netflix"],
+      "country": "US",
+      "sector": "tech",
+      "impersonationRisk": "high"
+    },
+    {
+      "id": "tesla",
+      "names": ["Tesla", "Tesla Inc.", "Tesla Motors"],
+      "canonicalDomains": ["tesla.com"],
+      "officialChannels": ["https://www.linkedin.com/company/tesla-motors"],
+      "country": "US",
+      "sector": "automotive",
+      "impersonationRisk": "high"
+    },
+    {
+      "id": "jpmorgan",
+      "names": ["JPMorgan", "JPMorgan Chase", "J.P. Morgan", "Chase"],
+      "canonicalDomains": ["jpmorgan.com", "jpmorganchase.com", "chase.com"],
+      "officialChannels": ["https://www.linkedin.com/company/jpmorganchase"],
+      "country": "US",
+      "sector": "finance",
+      "impersonationRisk": "high"
+    },
+    {
+      "id": "deloitte",
+      "names": ["Deloitte", "Deloitte Touche Tohmatsu"],
+      "canonicalDomains": ["deloitte.com"],
+      "officialChannels": ["https://www.linkedin.com/company/deloitte"],
+      "country": "US",
+      "sector": "consulting",
+      "impersonationRisk": "high"
+    },
+    {
+      "id": "unilever",
+      "names": ["Unilever", "Unilever PLC"],
+      "canonicalDomains": ["unilever.com", "careers.unilever.com"],
+      "officialChannels": ["https://www.linkedin.com/company/unilever"],
+      "country": "GB",
+      "sector": "fmcg",
+      "impersonationRisk": "medium"
+    },
+    {
+      "id": "siemens",
+      "names": ["Siemens", "Siemens AG"],
+      "canonicalDomains": ["siemens.com"],
+      "officialChannels": ["https://www.linkedin.com/company/siemens"],
+      "country": "DE",
+      "sector": "industrial",
+      "impersonationRisk": "medium"
+    },
+    {
+      "id": "samsung",
+      "names": ["Samsung", "Samsung Electronics"],
+      "canonicalDomains": ["samsung.com"],
+      "officialChannels": ["https://www.linkedin.com/company/samsung-electronics"],
+      "country": "KR",
+      "sector": "tech",
+      "impersonationRisk": "high"
+    }
+  ]
+}

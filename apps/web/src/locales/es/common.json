@@ -1,0 +1,14 @@
+{
+  "nav": {
+    "generator": "Generador",
+    "verifier": "Verificador",
+    "spec": "Protocolo",
+    "adopt": "Adoptar",
+    "about": "Acerca de"
+  },
+  "footer": {
+    "openSource": "Código abierto · Privacidad primero · Sin recopilación de datos",
+    "protocol": "Protocolo abierto de verificación hiring.txt"
+  },
+  "comingSoon": "Próximamente"
+}

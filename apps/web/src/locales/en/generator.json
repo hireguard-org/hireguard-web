@@ -1,0 +1,71 @@
+{
+  "sectionDefinition": "Definition",
+  "sectionContact": "Contact & Freshness",
+  "sectionOutput": "Output",
+  "canonicalDomains": {
+    "label": "Canonical Domains",
+    "hint": "Domains from which recruiters legitimately send email. One per line.",
+    "placeholder": "acme.com\ncareers.acme.com"
+  },
+  "recruitingChannels": {
+    "label": "Recruiting Channels",
+    "hint": "Official channels (LinkedIn company page, careers site). HTTPS required.",
+    "placeholder": "https://www.linkedin.com/company/acme\nhttps://careers.acme.com"
+  },
+  "applicationUrls": {
+    "label": "Application URLs",
+    "hint": "The <strong>only</strong> legitimate locations where candidates may apply. HTTPS required.",
+    "placeholder": "https://careers.acme.com/jobs"
+  },
+  "never": {
+    "label": "Never — Negative Assertions",
+    "hint": "\"We will never do these.\" At least one must be selected.",
+    "customLabel": "Add custom token",
+    "customPlaceholder": "custom-token",
+    "customHint": "Kebab-case format (e.g. remote-fee). Custom tokens may not be auto-matched by all verifiers."
+  },
+  "verifyContact": {
+    "label": "Verify Contact",
+    "hint": "Official address to confirm a recruiter's legitimacy. <code>mailto:</code> or <code>https://</code>",
+    "placeholder": "mailto:verify@acme.com"
+  },
+  "reportAbuse": {
+    "label": "Report Abuse",
+    "hint": "Where to report impersonation.",
+    "placeholder": "mailto:abuse@acme.com"
+  },
+  "policy": {
+    "label": "Policy",
+    "hint": "Optional human-readable recruiting policy page.",
+    "placeholder": "https://www.acme.com/recruiting-policy"
+  },
+  "verifiedRecruiters": {
+    "label": "Verified Recruiters",
+    "hint": "Recruiters' public profile URLs. One per line.",
+    "placeholder": "https://www.linkedin.com/in/recruiter-1"
+  },
+  "expires": {
+    "label": "Expires",
+    "hint": "After this date, the file is considered \"unverifiable\". Last-Updated is set automatically."
+  },
+  "required": "*",
+  "optional": "(optional)",
+  "pathPrefix": ".well-known/hiring.txt",
+  "btnCopy": "⧉ Copy",
+  "btnCopied": "✓ Copied",
+  "btnDownload": "↓ Download hiring.txt",
+  "statusValid": "Valid Tier 0 file — ready to publish",
+  "statusErrors": "{{count}} issue: {{first}}",
+  "statusErrors_plural": "{{count}} issues: {{first}} (+{{rest}})",
+  "footerNote": "Place the file at <code>/.well-known/hiring.txt</code> on your domain with valid TLS over HTTPS. The verifier fetches from the <strong>canonical domain</strong> — not from the address the sender provided. Add <code>Access-Control-Allow-Origin: *</code> to the response headers.",
+  "neverTokens": {
+    "payment": "payment",
+    "crypto": "crypto",
+    "gift-cards": "gift-cards",
+    "personal-email": "personal-email",
+    "whatsapp-first-contact": "whatsapp-first-contact",
+    "telegram-first-contact": "telegram-first-contact",
+    "id-before-offer": "id-before-offer",
+    "bank-details-before-offer": "bank-details-before-offer"
+  }
+}

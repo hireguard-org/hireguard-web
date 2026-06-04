@@ -1,0 +1,71 @@
+{
+  "sectionDefinition": "التعريف",
+  "sectionContact": "الاتصال والتحديث",
+  "sectionOutput": "المخرجات",
+  "canonicalDomains": {
+    "label": "Canonical Domains",
+    "hint": "النطاقات التي يرسل منها المُوظِّفون البريد بشكل مشروع. واحد في كل سطر.",
+    "placeholder": "شركة.com\ncareers.شركة.com"
+  },
+  "recruitingChannels": {
+    "label": "Recruiting Channels",
+    "hint": "القنوات الرسمية (صفحة الشركة على LinkedIn، موقع التوظيف). HTTPS مطلوب.",
+    "placeholder": "https://www.linkedin.com/company/شركة\nhttps://careers.شركة.com"
+  },
+  "applicationUrls": {
+    "label": "Application URLs",
+    "hint": "العناوين <strong>الوحيدة</strong> المشروعة التي يمكن للمرشحين التقديم من خلالها. HTTPS مطلوب.",
+    "placeholder": "https://careers.شركة.com/jobs"
+  },
+  "never": {
+    "label": "Never — التصريحات السلبية",
+    "hint": "\"لن نفعل هذا أبداً.\" يجب اختيار واحد على الأقل.",
+    "customLabel": "إضافة رمز مخصص",
+    "customPlaceholder": "رمز-مخصص",
+    "customHint": "تنسيق kebab-case (مثال: رسوم-تدريب). قد لا يتم التحقق من الرموز المخصصة تلقائياً بواسطة جميع المحققين."
+  },
+  "verifyContact": {
+    "label": "Verify Contact",
+    "hint": "عنوان رسمي لتأكيد شرعية المُوظِّف. <code>mailto:</code> أو <code>https://</code>",
+    "placeholder": "mailto:verify@شركة.com"
+  },
+  "reportAbuse": {
+    "label": "Report Abuse",
+    "hint": "أين يتم الإبلاغ عن انتحال الهوية.",
+    "placeholder": "mailto:abuse@شركة.com"
+  },
+  "policy": {
+    "label": "Policy",
+    "hint": "صفحة اختيارية لسياسة التوظيف القابلة للقراءة.",
+    "placeholder": "https://www.شركة.com/سياسة-التوظيف"
+  },
+  "verifiedRecruiters": {
+    "label": "Verified Recruiters",
+    "hint": "روابط الملفات الشخصية العامة للمُوظِّفين. واحد في كل سطر.",
+    "placeholder": "https://www.linkedin.com/in/مُوظِّف-1"
+  },
+  "expires": {
+    "label": "Expires",
+    "hint": "بعد هذا التاريخ، يُعتبر الملف \"غير قابل للتحقق\". يتم تعيين Last-Updated تلقائياً."
+  },
+  "required": "*",
+  "optional": "(اختياري)",
+  "pathPrefix": ".well-known/hiring.txt",
+  "btnCopy": "⧉ نسخ",
+  "btnCopied": "✓ تم النسخ",
+  "btnDownload": "↓ تحميل hiring.txt",
+  "statusValid": "ملف Tier 0 صالح — جاهز للنشر",
+  "statusErrors": "{{count}} مشكلة: {{first}}",
+  "statusErrors_plural": "{{count}} مشاكل: {{first}} (+{{rest}})",
+  "footerNote": "ضع الملف في <code>/.well-known/hiring.txt</code> على نطاقك مع TLS صالح عبر HTTPS. يجلب المُحقِّق من <strong>النطاق الأساسي</strong> — وليس من العنوان الذي قدمه المرسل. أضف <code>Access-Control-Allow-Origin: *</code> إلى ترويسات الاستجابة.",
+  "neverTokens": {
+    "payment": "payment",
+    "crypto": "crypto",
+    "gift-cards": "gift-cards",
+    "personal-email": "personal-email",
+    "whatsapp-first-contact": "whatsapp-first-contact",
+    "telegram-first-contact": "telegram-first-contact",
+    "id-before-offer": "id-before-offer",
+    "bank-details-before-offer": "bank-details-before-offer"
+  }
+}

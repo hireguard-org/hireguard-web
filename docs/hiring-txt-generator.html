@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hiring.txt · Tier 0 Generator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0c10;
+    --panel:#11151c;
+    --panel-2:#161b24;
+    --line:#222a36;
+    --line-soft:#1a212b;
+    --text:#dfe6f0;
+    --muted:#79869a;
+    --accent:#4ade80;
+    --accent-dim:#1f5e3a;
+    --warn:#fbbf24;
+    --danger:#f87171;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+    --disp:'Bricolage Grotesque',sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--mono);
+    font-size:14px;
+    line-height:1.5;
+    min-height:100vh;
+    background-image:
+      radial-gradient(900px 500px at 85% -10%, rgba(74,222,128,.07), transparent 60%),
+      linear-gradient(var(--line-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+    background-size:auto, 44px 44px, 44px 44px;
+    background-position:0 0, -1px -1px, -1px -1px;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:38px 24px 80px}
+  header{margin-bottom:34px;opacity:0;animation:rise .6s .05s ease forwards}
+  .badge{display:inline-flex;align-items:center;gap:7px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent-dim);background:rgba(74,222,128,.06);padding:5px 10px;border-radius:999px}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
+  h1{font-family:var(--disp);font-weight:800;font-size:clamp(34px,6vw,56px);letter-spacing:-.02em;margin:18px 0 6px;line-height:1}
+  h1 .tld{color:var(--accent)}
+  .sub{color:var(--muted);max-width:640px;font-size:13.5px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+  @media(max-width:880px){.grid{grid-template-columns:1fr}}
+  .card{background:linear-gradient(180deg,var(--panel),var(--panel-2));border:1px solid var(--line);border-radius:14px;padding:22px;opacity:0;animation:rise .6s ease forwards}
+  .card.f{animation-delay:.12s}.card.p{animation-delay:.2s}
+  .card h2{font-family:var(--disp);font-weight:600;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 18px;display:flex;align-items:center;gap:8px}
+  .card h2::before{content:"";width:14px;height:2px;background:var(--accent);border-radius:2px}
+  .field{margin-bottom:18px}
+  label{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+  label .req{color:var(--accent);margin-left:4px}
+  label .opt{color:#586277;margin-left:4px;text-transform:none;letter-spacing:0}
+  .hint{font-size:11px;color:#586277;margin-top:5px;line-height:1.4}
+  input,textarea{width:100%;background:#0c0f15;border:1px solid var(--line);color:var(--text);font-family:var(--mono);font-size:13px;padding:10px 12px;border-radius:9px;transition:border-color .15s,box-shadow .15s;resize:vertical}
+  textarea{min-height:74px;line-height:1.6}
+  input::placeholder,textarea::placeholder{color:#3f4858}
+  input:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(74,222,128,.13)}
+  input.bad,textarea.bad{border-color:var(--danger);box-shadow:0 0 0 3px rgba(248,113,113,.12)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+  .chip{cursor:pointer;user-select:none;font-size:12px;padding:7px 11px;border-radius:8px;border:1px solid var(--line);background:#0c0f15;color:var(--muted);transition:all .14s;display:inline-flex;align-items:center;gap:6px}
+  .chip:hover{border-color:#2f3a49;color:var(--text)}
+  .chip[aria-pressed="true"]{border-color:var(--accent);background:rgba(74,222,128,.1);color:var(--accent)}
+  .chip .x{font-family:var(--mono);font-weight:700;opacity:.55}
+  .chip[aria-pressed="true"] .x{content:"✓"}
+  .preview-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .path{font-size:11px;color:var(--muted);word-break:break-all}
+  .path b{color:var(--accent)}
+  pre{margin:0;background:#06080b;border:1px solid var(--line);border-radius:10px;padding:18px;font-size:12.5px;line-height:1.7;overflow-x:auto;min-height:320px;white-space:pre-wrap;word-break:break-word}
+  .k{color:#8ab4ff}.v{color:var(--text)}.c{color:#586277}.n{color:var(--accent)}
+  .actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+  button.act{flex:1;min-width:140px;cursor:pointer;font-family:var(--disp);font-weight:600;font-size:13px;letter-spacing:.04em;padding:12px 16px;border-radius:10px;border:1px solid var(--line);background:#0c0f15;color:var(--text);transition:all .15s;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+  button.act:hover{border-color:#33414f}
+  button.primary{background:var(--accent);color:#04140a;border-color:var(--accent)}
+  button.primary:hover{background:#5ee894;box-shadow:0 6px 20px rgba(74,222,128,.22)}
+  button:disabled{opacity:.4;cursor:not-allowed}
+  .status{margin-top:12px;font-size:12px;display:flex;align-items:center;gap:8px}
+  .status.ok{color:var(--accent)}.status.err{color:var(--warn)}
+  .status .ic{font-weight:700}
+  .foot{margin-top:30px;color:#586277;font-size:11.5px;line-height:1.6;border-top:1px solid var(--line-soft);padding-top:16px}
+  .foot code{color:var(--accent);background:rgba(74,222,128,.07);padding:1px 6px;border-radius:5px}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="badge"><span class="dot"></span>Açık İşe Alım Doğrulama Protokolü</span>
+    <h1>hiring<span class="tld">.txt</span></h1>
+    <p class="sub">Firmanın <code style="color:var(--accent)">/.well-known/hiring.txt</code> dosyasını üret. Kriptosuz Tier 0 — sahte İK temasını adayın bağımsızca doğrulayabilmesi için domain-köklü, otoriter beyan. Hiçbir veri sunucuya gitmez; her şey tarayıcında üretilir.</p>
+  </header>
+
+  <div class="grid">
+    <!-- FORM -->
+    <section class="card f">
+      <h2>Tanım</h2>
+
+      <div class="field">
+        <label>Canonical Domains <span class="req">*</span></label>
+        <textarea id="canonicalDomains" placeholder="ornekfirma.com&#10;careers.ornekfirma.com"></textarea>
+        <div class="hint">İşe alımcıların meşru olarak e-posta attığı domain(ler). Her satıra bir tane.</div>
+      </div>
+
+      <div class="field">
+        <label>Recruiting Channels <span class="req">*</span></label>
+        <textarea id="recruitingChannels" placeholder="https://www.linkedin.com/company/ornekfirma&#10;https://careers.ornekfirma.com"></textarea>
+        <div class="hint">Resmî kanallar (LinkedIn şirket sayfası, kariyer sitesi). HTTPS zorunlu.</div>
+      </div>
+
+      <div class="field">
+        <label>Application URLs <span class="req">*</span></label>
+        <textarea id="applicationUrls" placeholder="https://careers.ornekfirma.com/jobs"></textarea>
+        <div class="hint">Başvurunun yapılabileceği <b>tek</b> meşru adres(ler). HTTPS zorunlu.</div>
+      </div>
+
+      <div class="field">
+        <label>Never — Negatif Beyanlar <span class="req">*</span></label>
+        <div class="chips" id="neverChips"></div>
+        <div class="hint">"Bunları asla yapmayız" taahhüdü. En az bir tane seçili olmalı.</div>
+      </div>
+
+      <h2 style="margin-top:26px">İletişim & Tazelik</h2>
+
+      <div class="field">
+        <label>Verify Contact <span class="req">*</span></label>
+        <input id="verifyContact" placeholder="mailto:dogrula@ornekfirma.com">
+        <div class="hint">Bir işe alımcının gerçekliğini teyit için resmî adres. <code style="color:#8ab4ff">mailto:</code> veya <code style="color:#8ab4ff">https://</code></div>
+      </div>
+
+      <div class="field">
+        <label>Report Abuse <span class="req">*</span></label>
+        <input id="reportAbuse" placeholder="mailto:abuse@ornekfirma.com">
+        <div class="hint">Taklit/impersonation ihbar adresi.</div>
+      </div>
+
+      <div class="field">
+        <label>Policy <span class="opt">(opsiyonel)</span></label>
+        <input id="policy" placeholder="https://www.ornekfirma.com/recruiting-policy">
+      </div>
+
+      <div class="field">
+        <label>Verified Recruiters <span class="opt">(opsiyonel)</span></label>
+        <textarea id="verifiedRecruiters" placeholder="https://www.linkedin.com/in/isealimci-1"></textarea>
+        <div class="hint">İşe alımcıların kamuya açık profil URL'leri. Her satıra bir tane.</div>
+      </div>
+
+      <div class="field">
+        <label>Expires <span class="req">*</span></label>
+        <input id="expires" type="date">
+        <div class="hint">Bu tarihten sonra dosya "doğrulanamadı" sayılır. Last-Updated otomatik bugün olur.</div>
+      </div>
+    </section>
+
+    <!-- PREVIEW -->
+    <section class="card p" style="position:sticky;top:24px">
+      <div class="preview-head">
+        <h2 style="margin:0">Çıktı</h2>
+        <span class="path"><b id="pathHost">ornekfirma.com</b>/.well-known/hiring.txt</span>
+      </div>
+      <pre id="preview"></pre>
+      <div class="actions">
+        <button class="act" id="copyBtn">⧉ Kopyala</button>
+        <button class="act primary" id="dlBtn">↓ hiring.txt indir</button>
+      </div>
+      <div class="status" id="status"></div>
+      <div class="foot">
+        Dosyayı sunucunda <code>/.well-known/hiring.txt</code> yoluna, geçerli TLS ile HTTPS üzerinden koy. Doğrulayıcı dosyayı <b>kanonik domain'den</b> çeker — gönderenin verdiği adresten değil. Tier 1 (imza) ve Tier 2 (did:web + VC) bu çekirdeğin üstüne eklenir.
+      </div>
+    </section>
+  </div>
+</div>
+
+<script>
+const NEVER_TOKENS = [
+  {k:"payment", l:"payment"},
+  {k:"crypto", l:"crypto"},
+  {k:"gift-cards", l:"gift-cards"},
+  {k:"personal-email", l:"personal-email"},
+  {k:"whatsapp-first-contact", l:"whatsapp-first-contact"},
+  {k:"telegram-first-contact", l:"telegram-first-contact"},
+  {k:"id-before-offer", l:"id-before-offer"},
+  {k:"bank-details-before-offer", l:"bank-details-before-offer"},
+];
+const DEFAULT_ON = ["payment","crypto","gift-cards","personal-email","id-before-offer"];
+const never = new Set(DEFAULT_ON);
+
+const $ = id => document.getElementById(id);
+const ids = ["canonicalDomains","recruitingChannels","applicationUrls","verifyContact","reportAbuse","policy","verifiedRecruiters","expires"];
+
+// build chips
+const chipsEl = $("neverChips");
+NEVER_TOKENS.forEach(t=>{
+  const b=document.createElement("button");
+  b.className="chip";b.type="button";b.dataset.k=t.k;
+  b.setAttribute("aria-pressed", never.has(t.k));
+  b.innerHTML=`<span class="x">${never.has(t.k)?"✓":"+"}</span>${t.l}`;
+  b.onclick=()=>{
+    if(never.has(t.k)){never.delete(t.k);} else {never.add(t.k);}
+    b.setAttribute("aria-pressed", never.has(t.k));
+    b.querySelector(".x").textContent = never.has(t.k)?"✓":"+";
+    render();
+  };
+  chipsEl.appendChild(b);
+});
+
+// default expires = +1 year
+const d=new Date(); d.setFullYear(d.getFullYear()+1);
+$("expires").value = d.toISOString().slice(0,10);
+
+const lines = v => v.split("\n").map(s=>s.trim()).filter(Boolean);
+const isHttps = s => /^https:\/\/.+/i.test(s);
+const isContact = s => /^(mailto:.+@.+\..+|https:\/\/.+)/i.test(s);
+const isDomain = s => /^(?!-)[a-z0-9-]{1,63}(?<!-)(\.(?!-)[a-z0-9-]{1,63}(?<!-))+$/i.test(s);
+
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;");}
+
+function build(){
+  const cd = lines($("canonicalDomains").value);
+  const rc = lines($("recruitingChannels").value);
+  const au = lines($("applicationUrls").value);
+  const vr = lines($("verifiedRecruiters").value);
+  const vc = $("verifyContact").value.trim();
+  const ra = $("reportAbuse").value.trim();
+  const po = $("policy").value.trim();
+  const ex = $("expires").value;
+  const now = new Date().toISOString().replace(/\.\d{3}Z$/,"Z");
+  const exIso = ex ? ex+"T00:00:00Z" : "";
+
+  const errs=[];
+  if(!cd.length) errs.push("Canonical-Domains zorunlu");
+  else if(cd.some(x=>!isDomain(x))) errs.push("Geçersiz domain formatı");
+  if(!rc.length) errs.push("Recruiting-Channels zorunlu");
+  else if(rc.some(x=>!isHttps(x))) errs.push("Recruiting-Channels HTTPS olmalı");
+  if(!au.length) errs.push("Application-URLs zorunlu");
+  else if(au.some(x=>!isHttps(x))) errs.push("Application-URLs HTTPS olmalı");
+  if(!never.size) errs.push("En az bir Never beyanı seçilmeli");
+  if(!vc) errs.push("Verify-Contact zorunlu"); else if(!isContact(vc)) errs.push("Verify-Contact mailto:/https: olmalı");
+  if(!ra) errs.push("Report-Abuse zorunlu"); else if(!isContact(ra)) errs.push("Report-Abuse mailto:/https: olmalı");
+  if(po && !isHttps(po)) errs.push("Policy HTTPS olmalı");
+  if(vr.some(x=>!isHttps(x))) errs.push("Verified-Recruiters HTTPS olmalı");
+  if(!ex) errs.push("Expires zorunlu");
+
+  const host = cd[0] || "ornekfirma.com";
+  let out = `# https://${host}/.well-known/hiring.txt\n`;
+  if(cd.length) out += `Canonical-Domains: ${cd.join(", ")}\n`;
+  rc.forEach(x=> out += `Recruiting-Channels: ${x}\n`);
+  au.forEach(x=> out += `Application-URLs: ${x}\n`);
+  if(never.size) out += `Never: ${[...never].join(", ")}\n`;
+  if(vc) out += `Verify-Contact: ${vc}\n`;
+  if(ra) out += `Report-Abuse: ${ra}\n`;
+  if(po) out += `Policy: ${po}\n`;
+  vr.forEach(x=> out += `Verified-Recruiters: ${x}\n`);
+  if(exIso) out += `Expires: ${exIso}\n`;
+  out += `Last-Updated: ${now}\n`;
+
+  return {out, errs, host};
+}
+
+function highlight(text){
+  return text.split("\n").map(line=>{
+    if(line.startsWith("#")) return `<span class="c">${esc(line)}</span>`;
+    const i=line.indexOf(":");
+    if(i<0) return esc(line);
+    const k=line.slice(0,i), v=line.slice(i+1);
+    return `<span class="k">${esc(k)}</span><span class="c">:</span><span class="v">${esc(v)}</span>`;
+  }).join("\n");
+}
+
+let current="";
+function render(){
+  const {out, errs, host} = build();
+  current = out;
+  $("preview").innerHTML = highlight(out);
+  $("pathHost").textContent = host;
+  const st=$("status"), dl=$("dlBtn"), cp=$("copyBtn");
+  if(errs.length){
+    st.className="status err";
+    st.innerHTML=`<span class="ic">⚠</span> ${errs.length} eksik: ${errs[0]}${errs.length>1?` (+${errs.length-1})`:""}`;
+    dl.disabled=true; cp.disabled=true;
+  } else {
+    st.className="status ok";
+    st.innerHTML=`<span class="ic">✓</span> Geçerli Tier 0 dosyası — yayına hazır`;
+    dl.disabled=false; cp.disabled=false;
+  }
+}
+
+ids.forEach(id=> $(id).addEventListener("input", render));
+
+$("copyBtn").onclick = async ()=>{
+  try{ await navigator.clipboard.writeText(current);
+    const b=$("copyBtn"); const t=b.textContent; b.textContent="✓ Kopyalandı";
+    setTimeout(()=>b.textContent=t,1400);
+  }catch(e){ alert("Kopyalanamadı — metni elle seç."); }
+};
+
+$("dlBtn").onclick = ()=>{
+  const blob=new Blob([current],{type:"text/plain;charset=utf-8"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob); a.download="hiring.txt";
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(a.href);
+};
+
+// seed example so the preview isn't empty
+$("canonicalDomains").value="ornekfirma.com\ncareers.ornekfirma.com";
+$("recruitingChannels").value="https://www.linkedin.com/company/ornekfirma\nhttps://careers.ornekfirma.com";
+$("applicationUrls").value="https://careers.ornekfirma.com/jobs";
+$("verifyContact").value="mailto:dogrula@ornekfirma.com";
+$("reportAbuse").value="mailto:abuse@ornekfirma.com";
+render();
+</script>
+</body>
+</html>

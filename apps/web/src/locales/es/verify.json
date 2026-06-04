@@ -1,0 +1,36 @@
+{
+  "title": "Verificar un Reclutador",
+  "subtitle": "Pega el email, enlace o mensaje de un reclutador. Lo compararemos con la declaración hiring.txt de la empresa — todo funciona en tu navegador.",
+  "form": {
+    "company": { "label": "Nombre de la Empresa", "placeholder": "ej. Google, Amazon, Meta...", "hint": "Buscaremos en nuestro registro para encontrar el dominio canónico." },
+    "senderEmail": { "label": "Email del Remitente", "placeholder": "recruiter@empresa.com", "hint": "La dirección de email desde la que el reclutador te contactó." },
+    "listingUrl": { "label": "URL del Anuncio", "placeholder": "https://careers.empresa.com/jobs/12345", "hint": "Opcional. El enlace de la oferta o solicitud." },
+    "messageText": { "label": "Texto del Mensaje", "placeholder": "Pega el mensaje del reclutador aquí...", "hint": "Opcional. Escaneamos solicitudes de pago, lenguaje de urgencia, referencias a criptomonedas y otras señales de alerta." },
+    "authHeader": { "label": "Header de Autenticación de Email", "placeholder": "Authentication-Results: mx.google.com; dkim=pass ...", "hint": "Opcional. Pega el header Authentication-Results para verificar DKIM/SPF/DMARC." },
+    "canonicalDomain": { "label": "Dominio Canónico", "placeholder": "empresa.com", "hint": "Si la empresa no está en nuestro registro, ingresa su dominio oficial manualmente." }
+  },
+  "btn": { "verify": "Verificar", "verifying": "Verificando...", "reset": "Nueva Verificación" },
+  "registry": { "found": "Empresa encontrada en el registro", "notFound": "Empresa no encontrada — ingresa el dominio canónico manualmente", "searching": "Buscando..." },
+  "result": {
+    "title": "Resultado de la Verificación",
+    "verdict": { "VERIFIED": "VERIFICADO", "UNKNOWN": "DESCONOCIDO", "SUSPICIOUS": "SOSPECHOSO", "VERIFIED_CONTRADICTION": "VERIFICADO — CON CONTRADICCIÓN" },
+    "verdictDesc": {
+      "VERIFIED": "La información del reclutador coincide con la declaración hiring.txt de la empresa.",
+      "UNKNOWN": "No pudimos verificar este reclutador — la empresa puede no tener hiring.txt o la información no coincidió.",
+      "SUSPICIOUS": "Se detectaron señales de advertencia. Procede con precaución y verifica a través de canales oficiales.",
+      "VERIFIED_CONTRADICTION": "La verificación del dominio pasó pero un compromiso Never se contradice."
+    },
+    "steps": "Pasos de Verificación",
+    "reasons": "Por qué este veredicto",
+    "emailAuth": "Autenticación de Email",
+    "heuristics": "Señales Heurísticas",
+    "noHeuristics": "No se detectaron señales sospechosas.",
+    "actions": "Qué deberías hacer",
+    "action_VERIFIED": "Esto parece legítimo. Puedes proceder con el proceso de reclutamiento.",
+    "action_UNKNOWN": "Contacta a la empresa directamente a través de su sitio web oficial antes de compartir información personal.",
+    "action_SUSPICIOUS": "NO respondas a este reclutador. Reporta el contacto sospechoso a la empresa."
+  },
+  "corsBlocked": { "title": "CORS Bloqueado", "desc": "El servidor no permite solicitudes cross-origin.", "suggestion": "Prueba la extensión del navegador (próximamente) o verifica manualmente:" },
+  "optional": "(opcional)",
+  "required": "*"
+}

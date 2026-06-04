@@ -1,0 +1,106 @@
+{
+  "title": "The Protocol",
+  "subtitle": "hiring.txt is an open, machine-readable convention for companies to declare their legitimate recruiting practices. This page documents the Tier 0 specification.",
+  "toc": "Contents",
+  "overview": {
+    "title": "Overview",
+    "p1": "<code>hiring.txt</code> is a plain text file published at <code>/.well-known/hiring.txt</code> on a company's canonical domain. It declares which domains, channels, and URLs the company uses for recruiting — and what the company will <strong>never</strong> ask candidates to do.",
+    "p2": "Any candidate or tool can fetch the file over HTTPS and compare a recruiter's claims against the company's declaration. No signup, no API key, no intermediary."
+  },
+  "format": {
+    "title": "Wire Format",
+    "p1": "The file uses a simple key-value format, one entry per line:",
+    "rule1Title": "Comments",
+    "rule1": "Lines starting with <code>#</code> (after optional leading whitespace) are comments and are discarded by parsers. Inline <code>#</code> does <strong>not</strong> start a comment — URLs may contain fragments.",
+    "rule2Title": "Blank Lines",
+    "rule2": "Blank lines and whitespace-only lines are silently skipped.",
+    "rule3Title": "Key-Value Pairs",
+    "rule3": "Each data line has the format <code>Key: Value</code>. The first colon is the separator. Keys are case-insensitive.",
+    "rule4Title": "Repeated Keys",
+    "rule4": "When the same key appears multiple times, values are unioned (appended, not replaced). This is the primary mechanism for multi-value fields.",
+    "rule5Title": "Comma-Safe Fields",
+    "rule5": "Only <code>Canonical-Domains</code> and <code>Never</code> support comma-separated values within a single line. URL-containing fields must use repeated keys because URLs may contain commas."
+  },
+  "fields": {
+    "title": "Tier 0 Fields",
+    "required": "Required",
+    "optional": "Optional",
+    "canonicalDomains": {
+      "name": "Canonical-Domains",
+      "desc": "Domain(s) from which the company legitimately sends recruiting emails.",
+      "example": "Canonical-Domains: acme.com, careers.acme.com"
+    },
+    "recruitingChannels": {
+      "name": "Recruiting-Channels",
+      "desc": "Official recruiting channel URLs (LinkedIn company page, careers site). HTTPS required.",
+      "example": "Recruiting-Channels: https://linkedin.com/company/acme"
+    },
+    "applicationUrls": {
+      "name": "Application-URLs",
+      "desc": "The only legitimate URLs where candidates may apply. HTTPS required.",
+      "example": "Application-URLs: https://careers.acme.com/jobs"
+    },
+    "never": {
+      "name": "Never",
+      "desc": "Negative assertions — things the company will never do during recruitment. Kebab-case tokens.",
+      "example": "Never: payment, crypto, gift-cards"
+    },
+    "verifyContact": {
+      "name": "Verify-Contact",
+      "desc": "Official contact to confirm a recruiter's legitimacy. Must be <code>mailto:</code> or <code>https://</code> URI.",
+      "example": "Verify-Contact: mailto:verify@acme.com"
+    },
+    "reportAbuse": {
+      "name": "Report-Abuse",
+      "desc": "Where to report impersonation or fraudulent use of the company's name.",
+      "example": "Report-Abuse: mailto:abuse@acme.com"
+    },
+    "expires": {
+      "name": "Expires",
+      "desc": "ISO 8601 date-time after which the file is considered stale/unverifiable.",
+      "example": "Expires: 2027-06-01T00:00:00Z"
+    },
+    "policy": {
+      "name": "Policy",
+      "desc": "Optional human-readable recruiting policy page. HTTPS required.",
+      "example": "Policy: https://acme.com/recruiting-policy"
+    },
+    "verifiedRecruiters": {
+      "name": "Verified-Recruiters",
+      "desc": "Optional public profile URLs of authorized recruiters.",
+      "example": "Verified-Recruiters: https://linkedin.com/in/jane-doe"
+    },
+    "lastUpdated": {
+      "name": "Last-Updated",
+      "desc": "ISO 8601 timestamp of the last file update. Auto-set by the generator.",
+      "example": "Last-Updated: 2026-06-04T00:00:00Z"
+    }
+  },
+  "neverTokens": {
+    "title": "Well-Known Never Tokens",
+    "description": "The following tokens are part of the standard registry. Verifiers recognize and match these automatically. Custom kebab-case tokens are allowed but may not be auto-verified.",
+    "payment": "The company will never ask for payment at any stage.",
+    "crypto": "The company will never request cryptocurrency transfers.",
+    "gift-cards": "The company will never request gift card purchases.",
+    "personal-email": "All communication uses corporate email, never personal.",
+    "whatsapp-first-contact": "First contact will never be via WhatsApp.",
+    "telegram-first-contact": "First contact will never be via Telegram.",
+    "id-before-offer": "Government ID is never required before a formal offer.",
+    "bank-details-before-offer": "Bank details are never requested before a formal offer."
+  },
+  "verdicts": {
+    "title": "Verification Verdicts",
+    "description": "When a candidate uses the verifier, the result falls into one of three categories:",
+    "verified": "VERIFIED",
+    "verifiedDesc": "The recruiter's domain, channel, or profile matches the company's <code>hiring.txt</code> declaration. This is a hard, deterministic match — no guesswork.",
+    "unknown": "UNKNOWN",
+    "unknownDesc": "The company either has no <code>hiring.txt</code>, or the recruiter's information doesn't match any declared channel. This is the default state — absence of evidence, not evidence of fraud.",
+    "suspicious": "SUSPICIOUS",
+    "suspiciousDesc": "Heuristic signals indicate potential fraud: lookalike domain, free-mail sender claiming corporate identity, scam language patterns, or violation of a Never commitment."
+  },
+  "cors": {
+    "title": "CORS Requirement",
+    "description": "For the web-based verifier to fetch <code>hiring.txt</code> cross-origin, the hosting server must include:",
+    "note": "Without this header, browsers will block the request. Companies whose servers don't send CORS headers can still be verified through the browser extension (future)."
+  }
+}

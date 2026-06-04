@@ -1,0 +1,66 @@
+{
+  "title": "Das Protokoll",
+  "subtitle": "hiring.txt ist eine offene, maschinenlesbare Konvention für Unternehmen, um ihre legitimen Recruiting-Praktiken zu deklarieren. Diese Seite dokumentiert die Tier-0-Spezifikation.",
+  "toc": "Inhalt",
+  "overview": {
+    "title": "Überblick",
+    "p1": "<code>hiring.txt</code> ist eine Klartext-Datei unter <code>/.well-known/hiring.txt</code> auf der kanonischen Domain eines Unternehmens. Sie deklariert, welche Domains, Kanäle und URLs das Unternehmen für das Recruiting nutzt — und was es Kandidaten <strong>niemals</strong> abverlangen wird.",
+    "p2": "Jeder Kandidat oder jedes Tool kann die Datei per HTTPS abrufen und die Angaben eines Recruiters mit der Deklaration des Unternehmens vergleichen. Keine Registrierung, kein API-Schlüssel, kein Vermittler."
+  },
+  "format": {
+    "title": "Wire-Format",
+    "p1": "Die Datei verwendet ein einfaches Schlüssel-Wert-Format, ein Eintrag pro Zeile:",
+    "rule1Title": "Kommentare",
+    "rule1": "Zeilen, die mit <code>#</code> beginnen, sind Kommentare und werden vom Parser verworfen. Inline-<code>#</code> startet <strong>keinen</strong> Kommentar — URLs können Fragmente enthalten.",
+    "rule2Title": "Leerzeilen",
+    "rule2": "Leere Zeilen und Zeilen nur mit Leerzeichen werden stillschweigend übersprungen.",
+    "rule3Title": "Schlüssel-Wert-Paare",
+    "rule3": "Jede Datenzeile hat das Format <code>Schlüssel: Wert</code>. Der erste Doppelpunkt ist der Trenner. Schlüssel sind case-insensitive.",
+    "rule4Title": "Wiederholte Schlüssel",
+    "rule4": "Wenn derselbe Schlüssel mehrfach vorkommt, werden die Werte vereinigt (angehängt, nicht ersetzt).",
+    "rule5Title": "Komma-sichere Felder",
+    "rule5": "Nur <code>Canonical-Domains</code> und <code>Never</code> unterstützen kommagetrennte Werte in einer Zeile. URL-Felder müssen wiederholte Schlüssel verwenden."
+  },
+  "fields": {
+    "title": "Tier-0-Felder",
+    "required": "Pflichtfeld",
+    "optional": "Optional",
+    "canonicalDomains": { "name": "Canonical-Domains", "desc": "Domain(s), von denen das Unternehmen legitimerweise Recruiting-E-Mails sendet.", "example": "Canonical-Domains: acme.com, careers.acme.com" },
+    "recruitingChannels": { "name": "Recruiting-Channels", "desc": "Offizielle Recruiting-Kanal-URLs. HTTPS erforderlich.", "example": "Recruiting-Channels: https://linkedin.com/company/acme" },
+    "applicationUrls": { "name": "Application-URLs", "desc": "Die einzigen legitimen URLs, über die sich Kandidaten bewerben können. HTTPS erforderlich.", "example": "Application-URLs: https://careers.acme.com/jobs" },
+    "never": { "name": "Never", "desc": "Negative Aussagen — Dinge, die das Unternehmen beim Recruiting niemals tun wird. Kebab-Case-Tokens.", "example": "Never: payment, crypto, gift-cards" },
+    "verifyContact": { "name": "Verify-Contact", "desc": "Offizieller Kontakt zur Bestätigung der Legitimität eines Recruiters. Muss <code>mailto:</code> oder <code>https://</code> URI sein.", "example": "Verify-Contact: mailto:verify@acme.com" },
+    "reportAbuse": { "name": "Report-Abuse", "desc": "Wo Identitätsdiebstahl oder betrügerische Nutzung des Firmennamens gemeldet werden kann.", "example": "Report-Abuse: mailto:abuse@acme.com" },
+    "expires": { "name": "Expires", "desc": "ISO-8601-Zeitstempel, nach dem die Datei als veraltet/nicht verifizierbar gilt.", "example": "Expires: 2027-06-01T00:00:00Z" },
+    "policy": { "name": "Policy", "desc": "Optionale, menschenlesbare Recruiting-Richtlinienseite. HTTPS erforderlich.", "example": "Policy: https://acme.com/recruiting-policy" },
+    "verifiedRecruiters": { "name": "Verified-Recruiters", "desc": "Optionale öffentliche Profil-URLs autorisierter Recruiter.", "example": "Verified-Recruiters: https://linkedin.com/in/jane-doe" },
+    "lastUpdated": { "name": "Last-Updated", "desc": "ISO-8601-Zeitstempel der letzten Aktualisierung. Wird vom Generator automatisch gesetzt.", "example": "Last-Updated: 2026-06-04T00:00:00Z" }
+  },
+  "neverTokens": {
+    "title": "Bekannte Never-Tokens",
+    "description": "Die folgenden Tokens sind Teil des Standardregisters. Verifizierer erkennen und matchen sie automatisch.",
+    "payment": "Das Unternehmen wird niemals Zahlungen verlangen.",
+    "crypto": "Das Unternehmen wird niemals Kryptowährungstransfers anfordern.",
+    "gift-cards": "Das Unternehmen wird niemals Geschenkkartenkäufe anfordern.",
+    "personal-email": "Alle Kommunikation erfolgt über Unternehmens-E-Mail, nie über private.",
+    "whatsapp-first-contact": "Der Erstkontakt erfolgt niemals über WhatsApp.",
+    "telegram-first-contact": "Der Erstkontakt erfolgt niemals über Telegram.",
+    "id-before-offer": "Vor einem formellen Angebot wird niemals ein Ausweis verlangt.",
+    "bank-details-before-offer": "Vor einem formellen Angebot werden niemals Bankdaten angefordert."
+  },
+  "verdicts": {
+    "title": "Verifizierungsergebnisse",
+    "description": "Wenn ein Kandidat den Verifizierer nutzt, fällt das Ergebnis in eine von drei Kategorien:",
+    "verified": "VERIFIZIERT",
+    "verifiedDesc": "Domain, Kanal oder Profil des Recruiters stimmt mit der <code>hiring.txt</code>-Deklaration überein.",
+    "unknown": "UNBEKANNT",
+    "unknownDesc": "Das Unternehmen hat keine <code>hiring.txt</code> oder die Informationen stimmen mit keinem deklarierten Kanal überein.",
+    "suspicious": "VERDÄCHTIG",
+    "suspiciousDesc": "Heuristische Signale deuten auf möglichen Betrug hin: ähnliche Domain, kostenloser Mail-Absender, Betrugssprachmuster."
+  },
+  "cors": {
+    "title": "CORS-Anforderung",
+    "description": "Damit der Web-Verifizierer <code>hiring.txt</code> cross-origin abrufen kann, muss der Server Folgendes senden:",
+    "note": "Ohne diesen Header blockieren Browser die Anfrage."
+  }
+}

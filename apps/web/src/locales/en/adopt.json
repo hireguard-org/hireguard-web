@@ -1,0 +1,53 @@
+{
+  "title": "Adopt hiring.txt",
+  "subtitle": "Publish your company's hiring.txt in three simple steps. Protect your brand and your candidates.",
+  "step1": {
+    "num": "01",
+    "title": "Generate Your File",
+    "desc": "Use our generator to create a valid <code>hiring.txt</code> file. Fill in your canonical domains, official recruiting channels, application URLs, and Never commitments.",
+    "cta": "Open Generator →"
+  },
+  "step2": {
+    "num": "02",
+    "title": "Deploy to Your Domain",
+    "desc": "Place the file at <code>/.well-known/hiring.txt</code> on your canonical domain. It must be served over HTTPS with a valid TLS certificate.",
+    "nginx": "Nginx",
+    "apache": "Apache",
+    "caddy": "Caddy",
+    "staticHost": "Static Hosts",
+    "nginxConfig": "location /.well-known/hiring.txt {\n  alias /var/www/hiring.txt;\n  default_type text/plain;\n  add_header Access-Control-Allow-Origin \"*\";\n  add_header Cache-Control \"public, max-age=86400\";\n}",
+    "apacheConfig": "# .htaccess or httpd.conf\n<Files \"hiring.txt\">\n  Header set Access-Control-Allow-Origin \"*\"\n  Header set Cache-Control \"public, max-age=86400\"\n</Files>",
+    "caddyConfig": "# Caddyfile\nhandle /.well-known/hiring.txt {\n  header Access-Control-Allow-Origin \"*\"\n  header Cache-Control \"public, max-age=86400\"\n  file_server\n}",
+    "staticHostConfig": "# Netlify: public/_headers\n/.well-known/hiring.txt\n  Access-Control-Allow-Origin: *\n  Cache-Control: public, max-age=86400\n\n# Cloudflare Pages: _headers (same syntax)\n# Vercel: vercel.json headers array"
+  },
+  "step3": {
+    "num": "03",
+    "title": "Verify & Announce",
+    "desc": "Test your deployment using our verifier, then announce your adoption.",
+    "check1": "File is accessible at <code>https://yourdomain.com/.well-known/hiring.txt</code>",
+    "check2": "CORS header is present: <code>Access-Control-Allow-Origin: *</code>",
+    "check3": "Content-Type is <code>text/plain</code>",
+    "check4": "Expires date is in the future",
+    "check5": "File passes Tier 0 validation (use our verifier)",
+    "announce": "Consider announcing your adoption on LinkedIn, your careers page, and in recruiter communications. This builds trust with candidates."
+  },
+  "maintenance": {
+    "title": "Maintenance",
+    "desc": "Keep your hiring.txt current:",
+    "rule1": "Review and update before the Expires date",
+    "rule2": "Update when recruiting channels or domains change",
+    "rule3": "Update when onboarding new authorized recruiters",
+    "rule4": "The generator auto-sets Last-Updated — re-generate when updating"
+  },
+  "faq": {
+    "title": "FAQ",
+    "q1": "What if our server doesn't support CORS?",
+    "a1": "The web verifier requires CORS to fetch your file. Without it, candidates can use the browser extension (coming soon) or manually check the file. We strongly recommend configuring CORS — it's a single header.",
+    "q2": "Can we host it on a subdomain?",
+    "a2": "The file should be on your canonical domain (e.g., acme.com, not careers.acme.com), because verifiers resolve from the email sender's domain. List subdomains in Canonical-Domains.",
+    "q3": "How often should we update?",
+    "a3": "Whenever your recruiting channels, authorized recruiters, or policies change. At minimum, before the Expires date. We recommend setting Expires to 6-12 months out.",
+    "q4": "Is it free?",
+    "a4": "Yes, forever. hiring.txt is an open protocol. HireGuard's tools are open source. There is no paid tier."
+  }
+}

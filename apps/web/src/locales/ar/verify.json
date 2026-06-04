@@ -1,0 +1,36 @@
+{
+  "title": "تحقق من المُوظِّف",
+  "subtitle": "الصق بريد المُوظِّف أو رابطه أو رسالته. سنقارنها بإعلان hiring.txt للشركة — كل شيء يعمل في متصفحك.",
+  "form": {
+    "company": { "label": "اسم الشركة", "placeholder": "مثال: Google, Amazon, Meta...", "hint": "سنبحث في سجلنا للعثور على النطاق الرسمي." },
+    "senderEmail": { "label": "بريد المُرسِل", "placeholder": "recruiter@company.com", "hint": "عنوان البريد الإلكتروني الذي تواصل منه المُوظِّف." },
+    "listingUrl": { "label": "رابط الوظيفة", "placeholder": "https://careers.company.com/jobs/12345", "hint": "اختياري. رابط إعلان الوظيفة أو التقديم." },
+    "messageText": { "label": "نص الرسالة", "placeholder": "الصق رسالة المُوظِّف هنا...", "hint": "اختياري. نفحص طلبات الدفع ولغة الاستعجال ومراجع العملات المشفرة وإشارات التحذير الأخرى." },
+    "authHeader": { "label": "رأس مصادقة البريد", "placeholder": "Authentication-Results: mx.google.com; dkim=pass ...", "hint": "اختياري. الصق رأس Authentication-Results للتحقق من DKIM/SPF/DMARC." },
+    "canonicalDomain": { "label": "النطاق الرسمي", "placeholder": "company.com", "hint": "إذا لم تكن الشركة في سجلنا، أدخل نطاقها الرسمي يدويًا." }
+  },
+  "btn": { "verify": "تحقق", "verifying": "جارٍ التحقق...", "reset": "تحقق جديد" },
+  "registry": { "found": "تم العثور على الشركة في السجل", "notFound": "الشركة غير موجودة في السجل — أدخل النطاق الرسمي يدويًا", "searching": "جارٍ البحث..." },
+  "result": {
+    "title": "نتيجة التحقق",
+    "verdict": { "VERIFIED": "تم التحقق", "UNKNOWN": "غير معروف", "SUSPICIOUS": "مشبوه", "VERIFIED_CONTRADICTION": "تم التحقق — مع تناقض" },
+    "verdictDesc": {
+      "VERIFIED": "معلومات المُوظِّف تتطابق مع إعلان hiring.txt للشركة.",
+      "UNKNOWN": "لم نتمكن من التحقق من هذا المُوظِّف — قد لا تمتلك الشركة hiring.txt.",
+      "SUSPICIOUS": "تم اكتشاف إشارات تحذيرية. تابع بحذر وتحقق عبر القنوات الرسمية.",
+      "VERIFIED_CONTRADICTION": "نجح التحقق من النطاق لكن التزام Never متناقض."
+    },
+    "steps": "خطوات التحقق",
+    "reasons": "لماذا هذا الحكم",
+    "emailAuth": "مصادقة البريد الإلكتروني",
+    "heuristics": "إشارات استدلالية",
+    "noHeuristics": "لم يتم اكتشاف إشارات مشبوهة.",
+    "actions": "ما يجب عليك فعله",
+    "action_VERIFIED": "يبدو هذا مشروعًا. يمكنك المتابعة في عملية التوظيف.",
+    "action_UNKNOWN": "تواصل مع الشركة مباشرة عبر موقعها الرسمي قبل مشاركة أي معلومات شخصية.",
+    "action_SUSPICIOUS": "لا ترد على هذا المُوظِّف. أبلغ عن الاتصال المشبوه للشركة."
+  },
+  "corsBlocked": { "title": "تم حظر CORS", "desc": "الخادم لا يسمح بطلبات عبر النطاقات.", "suggestion": "جرب إضافة المتصفح (قريبًا) أو تحقق يدويًا:" },
+  "optional": "(اختياري)",
+  "required": "*"
+}

@@ -1,0 +1,71 @@
+{
+  "sectionDefinition": "Tanım",
+  "sectionContact": "İletişim & Tazelik",
+  "sectionOutput": "Çıktı",
+  "canonicalDomains": {
+    "label": "Canonical Domains",
+    "hint": "İşe alımcıların meşru olarak e-posta attığı domain(ler). Her satıra bir tane.",
+    "placeholder": "ornekfirma.com\ncareers.ornekfirma.com"
+  },
+  "recruitingChannels": {
+    "label": "Recruiting Channels",
+    "hint": "Resmî kanallar (LinkedIn şirket sayfası, kariyer sitesi). HTTPS zorunlu.",
+    "placeholder": "https://www.linkedin.com/company/ornekfirma\nhttps://careers.ornekfirma.com"
+  },
+  "applicationUrls": {
+    "label": "Application URLs",
+    "hint": "Başvurunun yapılabileceği <strong>tek</strong> meşru adres(ler). HTTPS zorunlu.",
+    "placeholder": "https://careers.ornekfirma.com/jobs"
+  },
+  "never": {
+    "label": "Never — Negatif Beyanlar",
+    "hint": "\"Bunları asla yapmayız\" taahhüdü. En az bir tane seçili olmalı.",
+    "customLabel": "Özel token ekle",
+    "customPlaceholder": "ozel-token",
+    "customHint": "Kebab-case formatında (örn. egitim-ucreti). Özel tokenlar tüm doğrulayıcılar tarafından otomatik kontrol edilmeyebilir."
+  },
+  "verifyContact": {
+    "label": "Verify Contact",
+    "hint": "Bir işe alımcının gerçekliğini teyit için resmî adres. <code>mailto:</code> veya <code>https://</code>",
+    "placeholder": "mailto:dogrula@ornekfirma.com"
+  },
+  "reportAbuse": {
+    "label": "Report Abuse",
+    "hint": "Taklit/impersonation ihbar adresi.",
+    "placeholder": "mailto:abuse@ornekfirma.com"
+  },
+  "policy": {
+    "label": "Policy",
+    "hint": "Opsiyonel insan-okunur işe alım politikası sayfası.",
+    "placeholder": "https://www.ornekfirma.com/ise-alim-politikasi"
+  },
+  "verifiedRecruiters": {
+    "label": "Verified Recruiters",
+    "hint": "İşe alımcıların kamuya açık profil URL'leri. Her satıra bir tane.",
+    "placeholder": "https://www.linkedin.com/in/isealimci-1"
+  },
+  "expires": {
+    "label": "Expires",
+    "hint": "Bu tarihten sonra dosya \"doğrulanamadı\" sayılır. Last-Updated otomatik bugün olur."
+  },
+  "required": "*",
+  "optional": "(opsiyonel)",
+  "pathPrefix": ".well-known/hiring.txt",
+  "btnCopy": "⧉ Kopyala",
+  "btnCopied": "✓ Kopyalandı",
+  "btnDownload": "↓ hiring.txt indir",
+  "statusValid": "Geçerli Tier 0 dosyası — yayına hazır",
+  "statusErrors": "{{count}} eksik: {{first}}",
+  "statusErrors_plural": "{{count}} eksik: {{first}} (+{{rest}})",
+  "footerNote": "Dosyayı sunucunda <code>/.well-known/hiring.txt</code> yoluna, geçerli TLS ile HTTPS üzerinden koy. Doğrulayıcı dosyayı <strong>kanonik domain'den</strong> çeker — gönderenin verdiği adresten değil. Yanıt başlıklarına <code>Access-Control-Allow-Origin: *</code> ekle.",
+  "neverTokens": {
+    "payment": "payment",
+    "crypto": "crypto",
+    "gift-cards": "gift-cards",
+    "personal-email": "personal-email",
+    "whatsapp-first-contact": "whatsapp-first-contact",
+    "telegram-first-contact": "telegram-first-contact",
+    "id-before-offer": "id-before-offer",
+    "bank-details-before-offer": "bank-details-before-offer"
+  }
+}

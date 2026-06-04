@@ -1,0 +1,50 @@
+{
+  "title": "Adopta hiring.txt",
+  "subtitle": "Publica el hiring.txt de tu empresa en tres simples pasos. Protege tu marca y a tus candidatos.",
+  "step1": {
+    "num": "01",
+    "title": "Genera tu Archivo",
+    "desc": "Usa nuestro generador para crear un archivo <code>hiring.txt</code> válido. Completa tus dominios canónicos, canales de reclutamiento oficiales, URLs de aplicación y compromisos Never.",
+    "cta": "Abrir Generador →"
+  },
+  "step2": {
+    "num": "02",
+    "title": "Despliega en tu Dominio",
+    "desc": "Coloca el archivo en <code>/.well-known/hiring.txt</code> en tu dominio canónico. Debe servirse por HTTPS con un certificado TLS válido.",
+    "nginx": "Nginx", "apache": "Apache", "caddy": "Caddy", "staticHost": "Hosts Estáticos",
+    "nginxConfig": "location /.well-known/hiring.txt {\n  alias /var/www/hiring.txt;\n  default_type text/plain;\n  add_header Access-Control-Allow-Origin \"*\";\n  add_header Cache-Control \"public, max-age=86400\";\n}",
+    "apacheConfig": "# .htaccess o httpd.conf\n<Files \"hiring.txt\">\n  Header set Access-Control-Allow-Origin \"*\"\n  Header set Cache-Control \"public, max-age=86400\"\n</Files>",
+    "caddyConfig": "# Caddyfile\nhandle /.well-known/hiring.txt {\n  header Access-Control-Allow-Origin \"*\"\n  header Cache-Control \"public, max-age=86400\"\n  file_server\n}",
+    "staticHostConfig": "# Netlify: public/_headers\n/.well-known/hiring.txt\n  Access-Control-Allow-Origin: *\n  Cache-Control: public, max-age=86400\n\n# Cloudflare Pages: _headers (misma sintaxis)\n# Vercel: vercel.json headers array"
+  },
+  "step3": {
+    "num": "03",
+    "title": "Verifica y Anuncia",
+    "desc": "Prueba tu despliegue usando nuestro verificador, luego anuncia tu adopción.",
+    "check1": "El archivo es accesible en <code>https://tudominio.com/.well-known/hiring.txt</code>",
+    "check2": "El header CORS está presente: <code>Access-Control-Allow-Origin: *</code>",
+    "check3": "Content-Type es <code>text/plain</code>",
+    "check4": "La fecha de expiración está en el futuro",
+    "check5": "El archivo pasa la validación Tier 0 (usa nuestro verificador)",
+    "announce": "Considera anunciar tu adopción en LinkedIn, tu página de carreras y en comunicaciones con reclutadores."
+  },
+  "maintenance": {
+    "title": "Mantenimiento",
+    "desc": "Mantén tu hiring.txt actualizado:",
+    "rule1": "Revisa y actualiza antes de la fecha de expiración",
+    "rule2": "Actualiza cuando cambien los canales de reclutamiento o dominios",
+    "rule3": "Actualiza al incorporar nuevos reclutadores autorizados",
+    "rule4": "El generador auto-establece Last-Updated — regenera al actualizar"
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "q1": "¿Qué pasa si nuestro servidor no soporta CORS?",
+    "a1": "El verificador web requiere CORS. Sin él, los candidatos pueden usar la extensión del navegador (próximamente) o verificar manualmente. Recomendamos configurar CORS — es un solo header.",
+    "q2": "¿Podemos alojarlo en un subdominio?",
+    "a2": "El archivo debe estar en tu dominio canónico (ej. acme.com, no careers.acme.com), porque los verificadores resuelven desde el dominio del remitente.",
+    "q3": "¿Con qué frecuencia debemos actualizar?",
+    "a3": "Cuando cambien tus canales de reclutamiento, reclutadores autorizados o políticas. Como mínimo, antes de la fecha de expiración.",
+    "q4": "¿Es gratis?",
+    "a4": "Sí, para siempre. hiring.txt es un protocolo abierto. Las herramientas de HireGuard son de código abierto. No hay plan de pago."
+  }
+}

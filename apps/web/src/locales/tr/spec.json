@@ -1,0 +1,106 @@
+{
+  "title": "Protokol",
+  "subtitle": "hiring.txt, firmaların meşru işe alım pratiklerini beyan etmeleri için açık, makine-okunur bir konvansiyondur. Bu sayfa Tier 0 spesifikasyonunu belgeler.",
+  "toc": "İçindekiler",
+  "overview": {
+    "title": "Genel Bakış",
+    "p1": "<code>hiring.txt</code>, bir firmanın kanonik domain'inde <code>/.well-known/hiring.txt</code> yolunda yayınlanan düz metin dosyasıdır. Firmanın işe alım için hangi domain'leri, kanalları ve URL'leri kullandığını — ve adaylardan <strong>asla</strong> ne istemeyeceğini beyan eder.",
+    "p2": "Herhangi bir aday veya araç dosyayı HTTPS üzerinden çekip, bir işe alımcının iddialarını firmanın beyanıyla karşılaştırabilir. Kayıt yok, API anahtarı yok, aracı yok."
+  },
+  "format": {
+    "title": "Wire Format",
+    "p1": "Dosya basit bir anahtar-değer formatı kullanır, her satırda bir giriş:",
+    "rule1Title": "Yorumlar",
+    "rule1": "<code>#</code> ile başlayan satırlar (opsiyonel öncü boşluk sonrası) yorumdur ve ayrıştırıcılar tarafından atılır. Satır içi <code>#</code> yorum <strong>başlatmaz</strong> — URL'ler fragment içerebilir.",
+    "rule2Title": "Boş Satırlar",
+    "rule2": "Boş satırlar ve yalnızca boşluk içeren satırlar sessizce atlanır.",
+    "rule3Title": "Anahtar-Değer Çiftleri",
+    "rule3": "Her veri satırı <code>Anahtar: Değer</code> formatındadır. İlk iki nokta ayırıcıdır. Anahtarlar büyük/küçük harf duyarsızdır.",
+    "rule4Title": "Tekrarlanan Anahtarlar",
+    "rule4": "Aynı anahtar birden fazla göründüğünde, değerler birleştirilir (üzerine yazılmaz, eklenir). Bu, çok değerli alanlar için birincil mekanizmadır.",
+    "rule5Title": "Virgüle-Güvenli Alanlar",
+    "rule5": "Yalnızca <code>Canonical-Domains</code> ve <code>Never</code> tek satırda virgülle ayrılmış değerleri destekler. URL içeren alanlar tekrarlanan anahtar kullanmalıdır çünkü URL'ler virgül içerebilir."
+  },
+  "fields": {
+    "title": "Tier 0 Alanları",
+    "required": "Zorunlu",
+    "optional": "Opsiyonel",
+    "canonicalDomains": {
+      "name": "Canonical-Domains",
+      "desc": "Firmanın meşru olarak işe alım e-postası gönderdiği domain(ler).",
+      "example": "Canonical-Domains: ornekfirma.com, careers.ornekfirma.com"
+    },
+    "recruitingChannels": {
+      "name": "Recruiting-Channels",
+      "desc": "Resmî işe alım kanal URL'leri (LinkedIn şirket sayfası, kariyer sitesi). HTTPS zorunlu.",
+      "example": "Recruiting-Channels: https://linkedin.com/company/ornekfirma"
+    },
+    "applicationUrls": {
+      "name": "Application-URLs",
+      "desc": "Adayların başvurabileceği tek meşru URL(ler). HTTPS zorunlu.",
+      "example": "Application-URLs: https://careers.ornekfirma.com/jobs"
+    },
+    "never": {
+      "name": "Never",
+      "desc": "Negatif beyanlar — firmanın işe alım sürecinde asla yapmayacağı şeyler. Kebab-case tokenlar.",
+      "example": "Never: payment, crypto, gift-cards"
+    },
+    "verifyContact": {
+      "name": "Verify-Contact",
+      "desc": "Bir işe alımcının meşruluğunu teyit etmek için resmî iletişim. <code>mailto:</code> veya <code>https://</code> URI olmalı.",
+      "example": "Verify-Contact: mailto:dogrula@ornekfirma.com"
+    },
+    "reportAbuse": {
+      "name": "Report-Abuse",
+      "desc": "Taklit veya firmanın adını dolandırıcılık amaçlı kullanımı bildirmek için adres.",
+      "example": "Report-Abuse: mailto:abuse@ornekfirma.com"
+    },
+    "expires": {
+      "name": "Expires",
+      "desc": "Bu tarihten sonra dosyanın eskimiş/doğrulanamaz sayılacağı ISO 8601 zaman damgası.",
+      "example": "Expires: 2027-06-01T00:00:00Z"
+    },
+    "policy": {
+      "name": "Policy",
+      "desc": "Opsiyonel insan-okunur işe alım politikası sayfası. HTTPS zorunlu.",
+      "example": "Policy: https://ornekfirma.com/ise-alim-politikasi"
+    },
+    "verifiedRecruiters": {
+      "name": "Verified-Recruiters",
+      "desc": "Yetkili işe alımcıların opsiyonel kamuya açık profil URL'leri.",
+      "example": "Verified-Recruiters: https://linkedin.com/in/jane-doe"
+    },
+    "lastUpdated": {
+      "name": "Last-Updated",
+      "desc": "Dosyanın son güncelleme zamanının ISO 8601 damgası. Generator tarafından otomatik ayarlanır.",
+      "example": "Last-Updated: 2026-06-04T00:00:00Z"
+    }
+  },
+  "neverTokens": {
+    "title": "Tanınmış Never Tokenları",
+    "description": "Aşağıdaki tokenlar standart kayıt defterinin parçasıdır. Doğrulayıcılar bunları otomatik olarak tanır ve eşleştirir. Özel kebab-case tokenlara izin verilir ancak otomatik doğrulanmayabilir.",
+    "payment": "Firma hiçbir aşamada ödeme talep etmez.",
+    "crypto": "Firma kripto para transferi talep etmez.",
+    "gift-cards": "Firma hediye kartı satın alınmasını talep etmez.",
+    "personal-email": "Tüm iletişim kurumsal e-posta ile yapılır, kişisel değil.",
+    "whatsapp-first-contact": "İlk iletişim asla WhatsApp üzerinden olmaz.",
+    "telegram-first-contact": "İlk iletişim asla Telegram üzerinden olmaz.",
+    "id-before-offer": "Resmî teklif öncesinde devlet kimliği asla istenmez.",
+    "bank-details-before-offer": "Resmî teklif öncesinde banka bilgileri asla istenmez."
+  },
+  "verdicts": {
+    "title": "Doğrulama Kararları",
+    "description": "Bir aday doğrulayıcıyı kullandığında, sonuç üç kategoriden birine girer:",
+    "verified": "DOĞRULANDI",
+    "verifiedDesc": "İşe alımcının domain'i, kanalı veya profili firmanın <code>hiring.txt</code> beyanıyla eşleşiyor. Bu kesin, deterministik bir eşleşmedir — tahmin yok.",
+    "unknown": "BİLİNMİYOR",
+    "unknownDesc": "Firma <code>hiring.txt</code> yayınlamıyor veya işe alımcının bilgisi beyan edilen hiçbir kanalla eşleşmiyor. Bu varsayılan durumdur — kanıt yokluğu, dolandırıcılık kanıtı değil.",
+    "suspicious": "ŞÜPHELİ",
+    "suspiciousDesc": "Heuristik sinyaller potansiyel dolandırıcılığa işaret ediyor: benzer domain, kurumsal kimlik iddia eden ücretsiz-mail gönderici, dolandırıcılık dili kalıpları veya bir Never taahhüdünün ihlali."
+  },
+  "cors": {
+    "title": "CORS Gereksinimi",
+    "description": "Web tabanlı doğrulayıcının <code>hiring.txt</code>'i çapraz-origin çekebilmesi için barındırma sunucusu şunu içermelidir:",
+    "note": "Bu header olmadan tarayıcılar isteği engeller. CORS header'ı göndermeyen sunuculardaki firmalar yine de tarayıcı eklentisi aracılığıyla doğrulanabilir (gelecek)."
+  }
+}

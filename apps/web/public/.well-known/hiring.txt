@@ -1,0 +1,11 @@
+# https://hireguard.org/.well-known/hiring.txt
+# HireGuard — Dogfooding: we publish our own hiring.txt
+
+Canonical-Domains: hireguard.org
+Recruiting-Channels: https://github.com/hireguard
+Application-URLs: https://github.com/hireguard
+Never: payment, crypto, gift-cards, personal-email, id-before-offer, bank-details-before-offer
+Verify-Contact: mailto:hello@hireguard.org
+Report-Abuse: mailto:abuse@hireguard.org
+Expires: 2027-06-01T00:00:00Z
+Last-Updated: 2026-06-04T00:00:00Z

@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs (rebuilt inside container)
+dist/
+
+# Source control
+.git/
+.gitignore
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test & Coverage
+coverage/
+
+# Dev artifacts
+dev-dist/
+*.tsbuildinfo
+
+# Documentation (not needed in prod image)
+docs/
+*.md
+LICENSE
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose*.yml

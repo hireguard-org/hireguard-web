@@ -1,0 +1,71 @@
+{
+  "sectionDefinition": "Definición",
+  "sectionContact": "Contacto y Vigencia",
+  "sectionOutput": "Resultado",
+  "canonicalDomains": {
+    "label": "Canonical Domains",
+    "hint": "Dominios desde los que los reclutadores envían correo legítimamente. Uno por línea.",
+    "placeholder": "empresa.com\ncareers.empresa.com"
+  },
+  "recruitingChannels": {
+    "label": "Recruiting Channels",
+    "hint": "Canales oficiales (página de empresa en LinkedIn, sitio de empleo). HTTPS obligatorio.",
+    "placeholder": "https://www.linkedin.com/company/empresa\nhttps://careers.empresa.com"
+  },
+  "applicationUrls": {
+    "label": "Application URLs",
+    "hint": "Las <strong>únicas</strong> ubicaciones legítimas donde los candidatos pueden postularse. HTTPS obligatorio.",
+    "placeholder": "https://careers.empresa.com/jobs"
+  },
+  "never": {
+    "label": "Never — Declaraciones Negativas",
+    "hint": "\"Nunca haremos esto.\" Debe seleccionarse al menos una.",
+    "customLabel": "Añadir token personalizado",
+    "customPlaceholder": "token-personalizado",
+    "customHint": "Formato kebab-case (ej. tarifa-remota). Los tokens personalizados pueden no ser verificados automáticamente por todos los verificadores."
+  },
+  "verifyContact": {
+    "label": "Verify Contact",
+    "hint": "Dirección oficial para confirmar la legitimidad de un reclutador. <code>mailto:</code> o <code>https://</code>",
+    "placeholder": "mailto:verificar@empresa.com"
+  },
+  "reportAbuse": {
+    "label": "Report Abuse",
+    "hint": "Dónde reportar suplantación de identidad.",
+    "placeholder": "mailto:abuso@empresa.com"
+  },
+  "policy": {
+    "label": "Policy",
+    "hint": "Página opcional de política de reclutamiento legible.",
+    "placeholder": "https://www.empresa.com/politica-reclutamiento"
+  },
+  "verifiedRecruiters": {
+    "label": "Verified Recruiters",
+    "hint": "URLs de perfiles públicos de reclutadores. Uno por línea.",
+    "placeholder": "https://www.linkedin.com/in/reclutador-1"
+  },
+  "expires": {
+    "label": "Expires",
+    "hint": "Después de esta fecha, el archivo se considera \"no verificable\". Last-Updated se establece automáticamente."
+  },
+  "required": "*",
+  "optional": "(opcional)",
+  "pathPrefix": ".well-known/hiring.txt",
+  "btnCopy": "⧉ Copiar",
+  "btnCopied": "✓ Copiado",
+  "btnDownload": "↓ Descargar hiring.txt",
+  "statusValid": "Archivo Tier 0 válido — listo para publicar",
+  "statusErrors": "{{count}} problema: {{first}}",
+  "statusErrors_plural": "{{count}} problemas: {{first}} (+{{rest}})",
+  "footerNote": "Coloca el archivo en <code>/.well-known/hiring.txt</code> en tu dominio con TLS válido sobre HTTPS. El verificador obtiene desde el <strong>dominio canónico</strong> — no desde la dirección proporcionada por el remitente. Añade <code>Access-Control-Allow-Origin: *</code> a los encabezados de respuesta.",
+  "neverTokens": {
+    "payment": "payment",
+    "crypto": "crypto",
+    "gift-cards": "gift-cards",
+    "personal-email": "personal-email",
+    "whatsapp-first-contact": "whatsapp-first-contact",
+    "telegram-first-contact": "telegram-first-contact",
+    "id-before-offer": "id-before-offer",
+    "bank-details-before-offer": "bank-details-before-offer"
+  }
+}
